@@ -1,0 +1,80 @@
+ [
+    {
+        "id": 1,
+        "nombre": "Tamago roll",
+        "descripcion": "Salmon , queso , philadelphia envuelto en una masa de huevo",
+        "precio": 500,
+        "imagen": "./images/tamago.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "roll New York",
+        "descripcion": "Arroz , palta y salmon",
+        "precio": 700,
+        "imagen": "/images/newyork.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "roll New York Phila",
+        "descripcion": "arroz , salmon, palta y queso philadelphia",
+        "precio": 1450,
+        "imagen": "/images/newyorkphila.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "roll Philadelphia",
+        "descripcion": "arroz , queso philadelphia y salmon",
+        "precio": 450,
+        "imagen": "/images/philadelphia.jpg"
+    },
+    {
+        "id": 5,
+        "nombre": "roll California",
+        "descripcion": "arroz, kanikama , queso philadelphia y palta",
+        "precio": 800,
+        "imagen": "/images/california.png"
+    },
+    {
+        "id": 6,
+        "nombre": "roll teki",
+        "descripcion": "arroz , salmon cocido con topping de batata",
+        "precio": 1000,
+        "imagen": "/images/teki.jpg"
+    },
+    {
+        "id": 7,
+        "nombre": "roll Futurama",
+        "descripcion": "arroz, langostino en tempura con topping de salsa de miel y mostaza",
+        "precio": 1000,
+        "imagen": "/images/futurama.png"
+    },{
+        "id": 8,
+        "nombre": "roll Maki Salmon",
+        "descripcion": "arroz , queso philadelphia y salmon envuelto en alga nori",
+        "precio": 1000,
+        "imagen": "/images/makisphila.png"
+    },{
+        "id": 9,
+        "nombre": "Niguiri pulpo",
+        "descripcion": "Bolita de arroz con pulpo encima",
+        "precio": 1000,
+        "imagen": "/images/nigiripulpo.png"
+    },
+    {
+        "id": 10,
+        "nombre": "Niguiri langostino",
+        "descripcion": "bolita de arroz con langostinos blanqueado encima",
+        "precio": 1000,
+        "imagen": "/images/nigirilangostino.png"
+    },
+    {
+        "id": 11,
+        "nombre": "Niguiri Salmon",
+        "descripcion": "bolita de salmon con cubierta de salmon",
+        "precio": 1000,
+        "imagen": "/images/Nigirisalmon.png"
+    }
+
+
+
+]

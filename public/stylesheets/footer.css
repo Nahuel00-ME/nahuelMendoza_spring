@@ -1,0 +1,141 @@
+footer {
+    background-color: rgb(205, 92, 92);
+    color: rgb(0, 0, 0);
+    display: flex;
+    padding: 0;
+    margin: 0;
+  
+  }
+  
+  .conteiner-footer {
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0px;
+      flex-direction: column
+  }
+  
+  .conteiner-secciones{
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  }
+  
+  .section-1 ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .section-1 ul li {
+    padding: 3px;
+    list-style: none;
+  }
+  
+  .section-1 ul a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0px 20px;
+  
+  }
+  
+  .section-1 ul a:hover {
+    color: rgb(0, 168, 107);
+  
+  }
+  
+  .section-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: column;
+  }
+  
+  .section-2 a:hover {
+    color: rgb(0, 168, 107);
+    transform: scale(1.5);
+    transition: 0.5s;
+  
+  }
+  
+  .section-2 p {
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .section-2 .social-icons {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+  }
+  
+  .section-2 .social-icons .fa-instagram {
+    font-size: 20px;
+    margin: 0px 5px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    padding: 10px;
+    transition: transform 0.3s ease;
+    text-align: center;
+  }
+  
+  .section-2 .social-icons .fa-twitter {
+    font-size: 20px;
+    margin: 0 10px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    padding: 10px;
+    transition: transform 0.3s ease;
+    text-align: center;
+  }
+  
+  .section-2 .social-icons .fa-facebook {
+    font-size: 20px;
+    margin: 0 10px;
+    border: 2px solid #000;
+    border-radius: 50%;
+    padding: 10px;
+    transition: transform 0.3s ease;
+    text-align: center;
+  }
+  
+  .section-3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: column;
+    font-size: 16px;
+  }
+  
+  .section-3 #correo {
+    font-size: 16px;
+  }
+  
+  .section-3 a {
+    text-decoration: none;
+    color: rgb(0, 168, 107);
+  }
+  
+  .section-3 a:hover {
+    color: aquamarine;
+    transform: scale(1.5);
+  
+  }
+  
+  
+  .section-1 .section-2 .section-3 {
+    flex: 1;
+    text-align: center;
+    margin: 0 10px;
+  }
+  
+  
+  .derechos {
+    color: #000000;
+    font-size: 16px;
+    text-align: center;
+  }
+  

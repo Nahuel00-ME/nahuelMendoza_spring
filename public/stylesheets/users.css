@@ -1,0 +1,45 @@
+.container-formulario {
+    background-color: white;
+    padding: 38px 50px 38px 50px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 100px;  
+  }
+  
+  .caja1-form
+  {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .container-formulario form{
+    display: flex;
+    flex-direction: column;
+  }
+  input[type=text],
+  input[type=password],
+  input[type=email] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    align-items: center;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color:  rgb(205, 92, 92);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  button:hover
+   {
+    opacity: 0.8;
+  }
