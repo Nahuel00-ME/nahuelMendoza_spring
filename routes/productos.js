@@ -1,18 +1,16 @@
 var express = require('express');
 var router = express.Router();
-const nose = require("../db/data"); 
+const { products, crear ,detalle,guardar,editar,update,borrar}= require("../controllers/productsControllers"); 
 
+//productos
+router.get('/', products);
+router.get ('/detalle/:id',detalle)
+router.get ('/productCrear',crear)
+router.post('/create',guardar );  //falta hacer
+router.get ('/editar/:id',editar) //falta hacer
+router.put ('/update/:id',update)  //falta hacer
+router.delete ('/borrar/id:',borrar) //falta hacer
+ 
 
-
-router.get('/', function(req, res, next) {
-
-  res.render('productos/productos', { title: 'nuestros productos' ,
-    index: nose.index,
-    carrito: nose.carrito,
-    login :nose.login,
-    register: nose.register,
-  });
-});
-  
 
   module.exports = router ;

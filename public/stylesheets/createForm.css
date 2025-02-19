@@ -1,0 +1,119 @@
+
+main{ 
+  background-color: black;
+}
+
+
+.formPadre {
+  
+  background-color: white;
+  padding: 76px 0px 3px 39px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 0px 178px 0px 194px;
+}
+  
+.subPadre{
+  display: flex;
+}
+    
+.formCreate{
+    display: flex;
+    flex-direction: column;
+    margin: 35px
+  }
+
+
+   
+#nombre
+{
+    width: 70%;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    align-items: center;
+    border-radius: 5px;
+  }
+
+#precio
+{
+  width: 70%;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    align-items: center;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+#cantidad
+{
+  width: 70%;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  align-items: center;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0px 10px 20px 5px;
+  }
+
+#descripcion
+{
+  width: 70%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  }
+
+#categoria
+  {
+  width: 70%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    align-items: center;
+    border-radius: 5px;
+  }
+
+  #descuento
+  {
+  width: 70%;
+    padding: 10px;
+    margin: 5px 0 10px 0;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    align-items: center;
+    border-radius: 5px;
+  }
+
+  .cajaButton {
+    display: flex;
+    flex-direction: row;
+    gap: 75px;
+    justify-content: flex-start;
+  }
+  
+  
+.bCrear {
+    background-color: rgb(205, 92, 92);
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    width: 161%;
+    border-radius: 5px;
+}  
+.bBorrar {
+    background-color: rgb(205, 92, 92);
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    width: 161%;
+    border-radius: 5px;
+}  
+  
+  button:hover
+   {
+    opacity: 0.8;
+  }

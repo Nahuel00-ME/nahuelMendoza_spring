@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "nombre": "Nahuel",
+    "apellido": "Mendoza",
+    "email": "nahuel@gmail.com",
+    "contrasena": "123123",
+    "rol": "admin",
+    "imagen": "default-image.png"
+  },
+  {
+    "id": 2,
+    "nombre": "Ezequiel",
+    "apellido": "Mendoza",
+    "email": "ezequiel11@gmail.com",
+    "contrasena": "222236",
+    "rol": "visitante",
+    "imagen": "./public"
+  },
+  {
+    "id": "083cf368-6ec9-4fc3-aa44-1ef69a30a0e4",
+    "nombre": "juan",
+    "apellido": "carlos",
+    "email": "juan@jc.com",
+    "contrasena": "$2b$10$eiLAc2mJ09oJWUjGclOO2us9MXqYoLd17wOBjWUS4dz2VigL9zeg2",
+    "imagen": "default-image.png"
+  },
+  {
+    "id": "30c2f557-abe1-4a6f-a018-eed88b527dee",
+    "nombre": "nahuel",
+    "apellido": "asdasd",
+    "email": "asd@gmail.com",
+    "contrasena": "$2b$10$6WagCYIY1qgSfMe.eESAT.IL3EI5as327/CUklyVTw/K0YAAGv25W",
+    "imagen": "default-image.png"
+  }
+]

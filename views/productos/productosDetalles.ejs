@@ -1,0 +1,48 @@
+
+<%- include('../partials/head', {title: 'Detalle del producto'}) %>
+<%- include('../partials/header') %>
+<article>
+    <div class="producto">
+        <div>
+        <img src="/images/<%= imagen %> " alt="california">
+    
+        <p class="descripcion"> <span>detalles del producto </span> : <%= descripcion %> </p>
+    </div>
+    <div class="nombre-producto">
+        <p class="nombre">Nombre del producto :</p>
+        <h3><%= nombre %></h3>
+    </div>
+  
+    <div class="cantidad-piezas"> 
+        <h3 class="piezas"> Cantidad de piezas: <%= piezas %></h3>
+    </div>
+    <div class="precio-producto">
+        <p class="precio">Precio del producto :</p>
+        <h1>$<%= precio %></h1> 
+    </div>
+    <ul class="listado-retiro">
+        <li>
+            <i class="fas fa-credit-card"></i>
+            <p>Aceptamos todas las tarjetas bancarias</p>
+        </li>
+        <li>
+            <i class="fas fa-store"></i>
+            <p>Retiro gratis en nuestro local</p>
+        </li>
+        <li>
+            <i class="fas fa-store"></i>
+            <p>Envio con gratis a traves de nuestra aplicacion</p>
+        </li>
+    </ul>
+
+    </div>
+</article>
+
+<a href="#" class="comprar">Comprar Ahora</a>
+<a href="/products/editar/<%= id %>" class="action-button edit">Editar Producto</a>
+<form action="" method="POST" >
+    <button type="submit" >Borrar Producto</button>
+</form>
+</a>
+</body>
+<%- include('../partials/footer') %>
