@@ -1,59 +1,31 @@
+<%- include("../partials/head.ejs") %>
+  
 
-    <%-include("../partials/headerAdm") %>
-        <body>
-            
-        
-    <main class="table-admin">
+<%-include("../partials/headerAdm.ejs") %>
 
-            <div class="titulo-admin">
-                <h1 class="text-center">Perfil de usuario</h1>
+<main>
+    <div class="formPadre">
+        <h2>Formulario de Editar Perfil</h2>
+        <form action="/submit" method="post" id="formCreate">
+         <div  class="subPadre"> 
+            <div>
+                <label for="nombre" class="form-label">Nombre:</label>
+                <input type="text" id="nombre" name="nombre">
             </div>
-            <div class="class-table">
-                <table>
-                    <thead>
-                        
-                        <tr></tr>
-                            <th>#</th>    
-                            <th>Producto</th>
-                            <th>Precio</th>
-                            <th>Piezas</th>
-                            <th>Categoria</th>
-                            <th>acciones</th>
-                                                    
-                    </thead>
-                    <tbody>
-                        <% product.forEach(({id,nombre,precio,piezas,categoria})=> { %>
-
-                            <tr>
-                                <td>
-                                <%=id %>
-                            </td>
-                            <td>
-                                <%= nombre %>
-                            </td>
-                            <td>
-                                $<%= precio %>
-                            </td>
-                            <td>
-                                <%= piezas %> ud.
-                            </td>
-                            <td>
-                                <%= categoria %>
-                            </td>
-                            <td>
-                                <div>
-                                    <a href="" class="btn-table">editar</a>
-                                </div>
-                            </td>
-                            <td>
-                                <div>
-                                    <a href="" class="btn-eliminar">eliminar</a>
-                                </div>
-                            </td>
-                        </tr>
-                            <% }) %>
-                    </tbody>
-                </table>
+            <div>
+                <label for="apellido" class="form-label">Apellido:</label>
+                <input type="text" id="apellido" name="apellido">
             </div>
-        </main>
-    </body>
+            <div>
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div>
+                <label for="password" class="form-label">Contraseña:</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div>
+                <label for="avatar">Imagen:</label>
+                <input type="file" name="avatar" id="avatar" accept="images/*" >
+            </div>
+            <div class="cajaButton"> </div>

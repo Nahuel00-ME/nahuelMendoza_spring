@@ -1,48 +1,53 @@
 
 <%- include('../partials/head', {title: 'Detalle del producto'}) %>
 <%- include('../partials/header') %>
-<article>
-    <div class="producto">
+<article class="detalleProducto">
+    <div class="productoD">
         <div>
         <img src="/images/<%= imagen %> " alt="california">
-    
-        <p class="descripcion"> <span>detalles del producto </span> : <%= descripcion %> </p>
+
+    <div class="descripcion-producto">
+        <p class="descripcion"> <span>Detalles del producto </span> :</p> 
+        <h3 class="descripcion"><%= descripcion %> </h3>
+    </div>
     </div>
     <div class="nombre-producto">
         <p class="nombre">Nombre del producto :</p>
-        <h3><%= nombre %></h3>
+        <h3 class="nombre"><%= nombre %></h3>
     </div>
   
     <div class="cantidad-piezas"> 
-        <h3 class="piezas"> Cantidad de piezas: <%= piezas %></h3>
+        <p class="piezas"> Cantidad de piezas:</p>
+        <h3 class="piezas"> <%= piezas %></h3>
     </div>
     <div class="precio-producto">
         <p class="precio">Precio del producto :</p>
-        <h1>$<%= precio %></h1> 
+        <h3 class="precio-numero">$<%= precio %></h3> 
     </div>
     <ul class="listado-retiro">
         <li>
-            <i class="fas fa-credit-card"></i>
+            <i class="fas fa-credit-card" id="fa-productos"></i>
             <p>Aceptamos todas las tarjetas bancarias</p>
         </li>
         <li>
-            <i class="fas fa-store"></i>
+            <i class="fas fa-store" id="fa-productos"></i>
             <p>Retiro gratis en nuestro local</p>
         </li>
         <li>
-            <i class="fas fa-store"></i>
+            <i class="fa-solid fa-motorcycle" id="fa-productos"></i>
             <p>Envio con gratis a traves de nuestra aplicacion</p>
         </li>
     </ul>
 
+    <div class="conteiner-botonesDetalle">
+    <a href="#" class="botones-detalle" id="botones-detalle">Comprar Ahora</a>
+    <a href="/products/editar/<%= id %>" class="botones-detalle">Editar Producto</a>
+    <form action="" method="POST" >
+        <a href="" class="botones-detalle">borrar</a>
+    </form>
+    </div>
+    </a>
     </div>
 </article>
-
-<a href="#" class="comprar">Comprar Ahora</a>
-<a href="/products/editar/<%= id %>" class="action-button edit">Editar Producto</a>
-<form action="" method="POST" >
-    <button type="submit" >Borrar Producto</button>
-</form>
-</a>
 </body>
 <%- include('../partials/footer') %>

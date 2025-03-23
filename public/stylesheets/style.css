@@ -3,7 +3,8 @@
 @import './footer.css';
 @import './main.css';
 @import './nav.css';
-@import './detalles.css';
+@import './productos.css';
 @import './users.css';
 @import './createForm.css';
-@import './styleAdm.css'
+@import './styleAdm.css';
+@import './productosDetail.css'

@@ -4,7 +4,7 @@ if(req.session.user){
     res.locals.user = req.session.user
     return next();
 }
-res.redirect('/');
+return res.redirect('/');
 }
 
 module.exports = userSesionCheck;

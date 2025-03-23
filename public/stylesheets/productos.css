@@ -1,3 +1,5 @@
+
+
 .conteiner-productos {
     display: flex;
     flex-wrap: wrap;
@@ -74,3 +76,39 @@
     background-color: #d35400;
   }
   
+
+  .conteiner-roll {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+    margin-left: 10px;
+    
+  }
+
+  .producto-niguiris{
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 10%;
+    gap: 15px;
+    padding-bottom: 20px;
+  }
+
+
+.product-titulo {
+  margin-bottom: 25px;
+  margin-top: 85px;
+  text-align: center;
+  font-size: 2rem;
+  color: rgb(0, 0, 0);
+}
+.product-titulo1 {
+  margin-bottom: 25px;
+  margin-top: 25px;
+  text-align: center;
+  font-size: 2rem;
+  color: white;
+}
+
+.allProduct {
+  background-color: gray;
+}

@@ -1,0 +1,60 @@
+
+<%-include("../partials/headerAdm") %>
+<body>
+    
+
+<main class="table-admin">
+
+    <div class="titulo-admin">
+        <h1 class="text-center">Administrar productos</h1>
+    </div>
+    <div class="class-table">
+        <table>
+            <thead>
+                
+                <tr>
+                    <th>#</th>    
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Piezas</th>
+                    <th>Categoria</th>
+                    <th>acciones</th>
+                </tr>                        
+            </thead>
+            <tbody>
+                <% product.forEach(({id,nombre,precio,piezas,categoria})=> { %>
+
+                    <tr>
+                        <td>
+                        <%=id %>
+                    </td>
+                    <td>
+                        <%= nombre %>
+                    </td>
+                    <td>
+                        $<%= precio %>
+                    </td>
+                    <td>
+                        <%= piezas %> ud.
+                    </td>
+                    <td>
+                        <%= categoria %>
+                    </td>
+                    <td>
+                        <div>
+                            <a href="/productos/editar/<%=id %>" class="btn-table">editar</a>
+                        </div>
+                        <form action="/productos/borrar/<%= id %>?_method=DELETE" method="POST">
+                            <button type="submit" class="btn-eliminar">borrar</button>
+                        </form>
+                        </div>
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>

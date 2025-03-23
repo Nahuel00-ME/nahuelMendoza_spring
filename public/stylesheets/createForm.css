@@ -10,11 +10,21 @@ main{
   padding: 76px 0px 3px 39px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin: 0px 178px 0px 194px;
+  box-sizing: border-box;
+  
 }
   
 .subPadre{
   display: flex;
+  flex-direction: column;
+}
+.subPadre div{
+  padding: 3px;
+ 
+}
+.cajaButton{
+  padding: 3px;
+ 
 }
     
 .formCreate{
@@ -94,7 +104,7 @@ main{
   }
   
   
-.bCrear {
+.bGuardar {
     background-color: rgb(205, 92, 92);
     color: white;
     padding: 10px 25px;

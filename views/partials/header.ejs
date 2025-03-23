@@ -9,11 +9,14 @@
                 <li><a href="/">home</a></li>
                 <li><a href="/productos">Productos</a></li>
                 <% if (!user) { %>
-                <li><a href="/users/login" class="icons"><i class="fa-solid fa-user"></i>iniciar sesion</a></li>
-                <li><a href="/users/register" class="icons"> <i class="fa-solid fa-right-to-bracket"></i>Registrarse</a></li>
-                <% }%>
-                <% if (user) { %>
-                    <li><a href="/users/profile/<%= user.id %>" class="icons"> <i class="fa-solid fa-user"></i>perfil</a></li>
+                    <li><a href="/users/login" class="icons"><i class="fa-solid fa-user"></i>iniciar sesion</a></li>
+                    <li><a href="/users/register" class="icons"> <i class="fa-solid fa-right-to-bracket"></i>Registrarse</a></li>
+                    <% }%>
+                    <% if (user) { %>
+                        
+                        <li><a href="/products/carrito" class="icons"> <i class="fa-solid fa-shopping-cart"></i>Carrito</a></li>
+                        <li><a href="/users/profile/<%= user.id %>" class="icons"> <i class="fa-solid fa-user"></i>modificar perfil </a></li>
+                        <li href="/users/profile/<%= user.id %>" class="icons-usuario"> <%= user.nombre %>: <%= user.imagen %></li>
                     <li><a href="/users/logout" class="icons"> cerrar sesion</a></li>
                     <% }%>
                       

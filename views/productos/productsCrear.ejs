@@ -1,11 +1,11 @@
 
     <%-include("../partials/head.ejs") %>
-    <%-include("../partials/header.ejs") %>
+    <%-include("../partials/headerAdm.ejs") %>
 
-  <main>
+  
     <div class="formPadre">
-        <h2>Formulario de Productos</h2>
-        <form action="/submit" method="post" id="formCreate">
+        <h2>Formulario de Crear Productos</h2>
+        <form action="/productos/create" method="post" id="formCreate">
          <div  class="subPadre"> 
             <div>
                 <label for="nombre" class="form-label">Nombre::</label>
@@ -30,25 +30,22 @@
             <div>
                 <label for="category" class="categoria">Categoría:</label>
                 <% categorias.forEach(categorias=> { %>
-                    <option value="<%= category %>">
+                    <option value="<%= categorias %>">
                     </option>
                     <% }) %>
                                 </select>
             </div>
             <div>
                 <label for="file">Imagen:</label>
-                <input type="file" name="avatar" id="avatar" accept="images/* " value="<%= locals.user && locals.user.avatar ? user.avatar : "" %>">
+                <input type="file" name="avatar" id="avatar" accept="images/*" >
             </div>
             <div class="cajaButton">
             <div>
-                <button type="submit" class="bCrear">Crear</button>
+                <button type="submit" class="bCrear">Guardar</button>
                 
             </div>
-            <div>
-                <button type="submit" class="bBorrar">Borrar</button>
-            </div>
-        </div>
+         </div>
         </form>
     </div>
- </main>
+ 
     <%-include("../partials/footer.ejs") %>

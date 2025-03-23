@@ -1,50 +1,44 @@
 
 <%-include("../partials/head.ejs") %>
-<%-include("../partials/header.ejs") %>
+<%-include("../partials/headerAdm.ejs") %>
 
 <main>
 <div class="formPadre">
-    <h2>Formulario de Productos</h2>
-    <form action="/submit" method="post" id="formCreate">
+    <h2>Formulario de Editar Productos</h2>
+    <form action="/productos/update/<%=id%>?_method=PUT" method="post" id="formCreate">
      <div  class="subPadre"> 
         <div>
             <label for="nombre" class="form-label">Nombre::</label>
-            <input type="text" id="nombre" name="nombre">
+            <input type="text" id="nombre" value="<%=nombre %>" name="nombre">
         </div>
         <div>
             <label for="precio" class="form-label" value="0">Precio:</label>
-            <input type="number" id="precio" name="precio">
+            <input type="number" id="precio"  value="<%= precio %>"name="precio">
         </div>
         <div>
-            <label for="cantidad" class="form-label" value="0">Cantidad:</label>
-            <input type="number" id="cantidad" name="cantidad" >
-        </div>
-        <div>
-            <label for="descuento" class="form-label">Descuento:</label>
-            <input type="number" id="cantidad" name="descuento" >
+            <label for="piezas" class="form-label">Piezas:</label>
+            <input type="number" id="piezas" value="<%= piezas %>" name="descuento" >
         </div>
         <div>
             <label for="descripcion" class="form-label">descripcion:</label>
-            <textarea id="descripcion" name="descripcion"></textarea>
+            <textarea id="descripcion"  name="descripcion"><%= descripcion %></textarea>
         </div>
         <div>
             <label for="category" class="categoria">Categoría:</label>
-            <% categorias.forEach(categorias=> { %>
-                <option value="<%= category %>">
+            <select>
+                <% categorias.forEach(categorias=> { %>
+                <option value="<%= categorias %>">
                 </option>
                 <% }) %>
                             </select>
         </div>
         <div class="cajaButton">
         <div>
-            <button type="submit" class="bCrear">Crear</button>
+            <button type="submit"  class="bGuardar">Guardar</button>
             
         </div>
-        <div>
-            <button type="submit" class="bBorrar">Borrar</button>
         </div>
     </div>
     </form>
 </div>
 </main>
-<%-include("../partials/footer.ejs") %>

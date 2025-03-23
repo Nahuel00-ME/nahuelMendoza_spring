@@ -10,13 +10,12 @@
 </head>
 
 <body>
-    <main>
-        <%-include("../partials/header.ejs") %>
-
-            <div class="conteiner-productos">
-                <h2 class="product-titulo">Seccion Rolls</h2>
+    <%-include("../partials/header.ejs") %>
+    
+        <h2 class="product-titulo">Seccion Rolls</h2>
+            <div class="conteiner-roll">
                 <% roll.forEach(({id,nombre,precio,categoria,imagen}) => { %>
-                    <section class="Rolls">
+                    
                 <article>
                     <div class="producto">
                         <a href="/productos/detalle/<%= id %>">
@@ -32,14 +31,14 @@
                         </a>
                         </div>
                     </article>
-                </section>
-                    <% }) %>
                 
+                    <% }) %>
+            </div>
+            <h2 class="product-titulo">Seccion Niguiris</h2>
                 <div class="producto-niguiris">
-                    <h2 class="product-titulo">Seccion Niguiris</h2>
                     <% niguiri.forEach(({id,nombre,precio,categoria,imagen}) => { %>
-                        <section class="Rolls">
-                    <article>
+                        
+                    <article class="conteiner-niguiris">
                         <div class="producto">
                             <a href="/productos/detalle/<%= id %>">
                                 <img src="/images/<%= imagen %>" alt="producto">
@@ -55,11 +54,49 @@
                             </a>
                             </div>
                         </article>
-                    </section>
+                    
                         <% }) %>
             </div>
-           
-        </main>
+           <section>
+            <div>
+            <h3 class="titulo-comentarios">comentarios de nuestros clientes</h3>
+            <div class="comentarios">
+                <p>Excelente calidad y servicio</p>
+                <p>Los mejores rolls de la ciudad</p>
+                <p>Recomendado</p>
+            </div>
+            <div class="comentarios">
+                <p>Excelente calidad y servicio</p>
+                <p>Los mejores rolls de la ciudad</p>
+                <p>Recomendado</p>
+            </div>
+            <div class="comentarios">
+                <p>Excelente calidad y servicio</p>
+                <p>Los mejores rolls de la ciudad</p>
+                <p>Recomendado</p>
+            </div>
+            <div class="comentarios">
+                <p>Excelente calidad y servicio</p>
+                <p>Los mejores rolls de la ciudad</p>
+                <p>Recomendado</p>
+            </div>
+            <div class="comentarios">
+                <p>Excelente calidad y servicio</p>
+                <p>Los mejores rolls de la ciudad</p>
+                <p>Recomendado</p>
+            </div>
+            <div class="comentarios">
+                <p>Excelente calidad y servicio</p>
+                <p>Los mejores rolls de la ciudad</p>
+                <p>Recomendado</p>
+            </div>
+            <div class="comentarios">
+                <p>Excelente calidad y servicio</p>
+                <p>Los mejores rolls de la ciudad</p>
+                <p>Recomendado</p>
+            </div>
+           </section>
+        </div>
         <%-include("../partials/footer.ejs") %>
     
 

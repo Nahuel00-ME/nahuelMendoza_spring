@@ -1,10 +1,7 @@
 const { v4: uuidv4 } = require('uuid');
 const bcrypt = require('bcrypt');
-const {readFile,readJson,saveJson } = require('../util/fileSystem');
 const { validationResult } = require("express-validator");
-const product = require("../db/sushi.json");
-const categorias = require("../db/categorias.json");
-
+const {users}= require('../db/database/models')
 
 const usersControllers = 
 {
@@ -12,44 +9,54 @@ const usersControllers =
         return  res.render("users/register")
     },
     
-    procesoRegistro : (req,res) => {    
+    procesoRegistro : async (req,res) => {    
         
-   const users = readJson('../db/users.json')
+   try{
    const {nombre,apellido,email,contrasena} = req.body
-   const nuevoUsuario = {
+   await User.create({ 
        id: uuidv4(),
        nombre : nombre.trim(),
        apellido : apellido.trim(),
        email : email.trim(),
        contrasena : bcrypt.hashSync(contrasena,10),
-       imagen : "default-image.png"
-   }
+       imagen : imagen,
+       rolId: 2
+   })
    users.push(nuevoUsuario)
-   saveJson('../db/users.json',users)
-   return res.redirect('/users/login')
+   return res.redirect('/users/login')}
+catch(error){
+    console.log(error)
 
-},
+}},
 
 login:(req, res)=> {
  return  res.render("users/login")
 },
-procesoLogin : (req,res) => {
-   
-    const users = readJson('../db/users.json')
+procesoLogin :async (req,res) => {  
     const {email,contrasena} = req.body
-
-    //bcrypt.compareSync
-    const user = users.find(u => u.email === email &&  u.contrasena===contrasena)
-    console.log("user",user)
-            if(!user){
-                return res.render('users/login',{
-                  error : "Credenciales inválidas"
-                })
-              }
-             
+    try{
+    const user = await users.findOne({where: {email}});
+     console.log(user)
+    if (!user) {
+        const error ={
+            email : "credenciales invalidas"
+        }
+        return res.render('users/login', {
+            error
+        });
+    }    
+    const contrasenaValida = await bcrypt.compareSync(contrasena, user.contrasena);
+    console.log(contrasenaValida)
+    if (!contrasenaValida) {
+        return res.render('users/login', {
+          error: "Credenciales inválidas"
+      });
+  }
+                         
      const { id, nombre, rol} = user 
         req.session.user = {
         id ,
+        email,
         nombre,
         rol
       }
@@ -60,6 +67,9 @@ procesoLogin : (req,res) => {
       res.cookie("user",{ ...req.session.user },{maxAge:1000*60*60*24*90})
     
     return res.redirect("/")
+}catch(error){
+    console.log(error)
+}
 },
 
 profile : (req,res) => {
@@ -71,10 +81,18 @@ return res.render("users/profile" , {
 
 },
 
-logout : (req,res) => {
+
+
+logout :  async (req,res) => {try{
+    
     req.session.destroy()
     res.clearCookie("user")
     return res.redirect("/")
-},
+
 }
+catch(error){
+    console.log(error)
+}}}
+
+
  module.exports = usersControllers;
