@@ -2,7 +2,7 @@
 const productsJson = require('../../sushi.json');
 const images = productsJson.map(({id, imagen}) => {
   return {
-    name : imagen,
+    nombre : imagen,
     productId: id,
     createdAt : new Date,
     updatedAt : new Date

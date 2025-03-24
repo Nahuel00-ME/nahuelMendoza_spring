@@ -3,7 +3,7 @@
 /**@type {import('sequelize-cli').Migration} */
 const path = require("path");
 const directory = path.join(__dirname, "../../users.json");
-const { readFile, parseFile } = require("../../util/filesystem");
+const { readFile, parseFile } = require("../../../util/fileSystem");
 const bcrypt = require("bcrypt");
 const users = parseFile(readFile(directory));
 
