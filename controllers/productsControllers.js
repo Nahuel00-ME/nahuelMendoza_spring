@@ -1,19 +1,18 @@
 
 const fs = require('fs');
 const { products } = require('../db/database/models');
-const { where } = require('sequelize');
 const productsControllers =
  {
 
 products : async (req, res)=> {
   
   try{
-  let niguiri = await products.findAll({where: {categoria: 'niguiri'}});
-  let roll = await products.findAll({where: {categoria: 'roll'}});
+  let niguiri = await products.findOne({where: {categoria: 'niguiris'}});
+  let roll = await products.findOne({where: {categoria: 'roll'}});
 
    return res.render("productos/productos", {
-    product,
-    categorias})
+   niguiri,
+   roll})
   }
   catch(error){ 
     console.log(error)
