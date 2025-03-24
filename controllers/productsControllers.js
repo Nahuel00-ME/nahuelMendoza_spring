@@ -1,15 +1,15 @@
 
 const fs = require('fs');
-const { products } = require('../db/database/models');
+const { Product } = require('../db/database/models');
 const productsControllers =
  {
 
 products : async (req, res)=> {
   
+  console.log(Product)
   try{
-  let niguiri = await products.findOne({where: {categoria: 'niguiris'}});
-  let roll = await products.findOne({where: {categoria: 'roll'}});
-
+  let roll = await Product.findOne({where: {categoria:"niguiris"}});
+  let niguiri = await Product.findOne({where: {categoria: "roll"}});
    return res.render("productos/productos", {
    niguiri,
    roll})

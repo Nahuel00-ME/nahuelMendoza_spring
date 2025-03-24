@@ -5,7 +5,7 @@
     "descripcion": "Salmon , queso , philadelphia envuelto en una masa de huevo",
     "piezas": 4,
     "precio": 500,
-    "imagen": "tamago.jpg"
+    "productsId": "tamago.jpg"
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "descripcion": "Arroz , palta y salmon",
     "piezas": 10,
     "precio": 700,
-    "imagen": "newyork.png"
+    "productsId": "newyork.png"
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "descripcion": "arroz , salmon, palta y queso philadelphia",
     "piezas": 10,
     "precio": 1450,
-    "imagen": "newyorkphila.jpg",
+    "productsId": "newyorkphila.jpg",
     "categoria": "roll"
   },
   {
@@ -30,7 +30,7 @@
     "descripcion": "arroz , queso philadelphia y salmon",
     "piezas": 10,
     "precio": 450,
-    "imagen": "philadephia.png",
+    "productsId": "philadephia.png",
     "categoria": "roll"
   },
   {
@@ -39,7 +39,7 @@
     "descripcion": "arroz, kanikama , queso philadelphia y palta",
     "piezas": 10,
     "precio": 800,
-    "imagen": "california.png",
+    "productsId": "california.png",
     "categoria": "roll"
   },
   {
@@ -48,7 +48,7 @@
     "descripcion": "arroz , salmon cocido con topping de batata",
     "piezas": 8,
     "precio": 1400,
-    "imagen": "teki.png",
+    "productsId": "teki.png",
     "categoria": "roll"
   },
   {
@@ -57,7 +57,7 @@
     "descripcion": "arroz, langostino en tempura con topping de salsa de miel y mostaza",
     "piezas": 10,
     "precio": 600,
-    "imagen": "futurama.png",
+    "productsId": "futurama.png",
     "categoria": "roll"
   },
   {
@@ -66,7 +66,7 @@
     "descripcion": "arroz , queso philadelphia y salmon envuelto en alga nori",
     "piezas": 10,
     "precio": 1600,
-    "imagen": "makisphila.png",
+    "productsId": "makisphila.png",
     "categoria": "roll"
   },
   {
@@ -75,7 +75,7 @@
     "descripcion": "Bolita de arroz con pulpo encima",
     "piezas": 5,
     "precio": 600,
-    "imagen": "nigiripulpo.png",
+    "productsId": "nigiripulpo.png",
     "categoria": "niguiri"
   },
   {
@@ -84,7 +84,7 @@
     "descripcion": "bolita de arroz con langostinos blanqueado encima",
     "piezas": 5,
     "precio": 1200,
-    "imagen": "nigirilangostino.png",
+    "productsId": "nigirilangostino.png",
     "categoria": "niguiri"
   },
   {
@@ -93,7 +93,7 @@
     "descripcion": "bolita de salmon con cubierta de salmon",
     "piezas": 5,
     "precio": 1300,
-    "imagen": "Nigirisalmon.png",
+    "productsId": "Nigirisalmon.png",
     "categoria": "niguiri"
   },
   {
@@ -102,6 +102,6 @@
     "descripcion": "probando2",
     "piezas": null,
     "precio": 123123131231234440000,
-    "imagen": "default-image.png"
+    "productsId": "default-image.png"
   }
 ]
