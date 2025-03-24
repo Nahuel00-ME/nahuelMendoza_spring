@@ -23,7 +23,7 @@ module.exports = {
       },
       imagen :{
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
       },
      
       seccionId: {
