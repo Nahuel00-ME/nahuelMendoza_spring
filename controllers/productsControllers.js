@@ -147,13 +147,19 @@ const productsControllers = {
   borrar: async (req, res) => {
     const { id } = req.params;
     try {
-      const productosModificados = products.filterOne({ where: { id: +id } });
 
-      await products.destroy({
+      await ProductIngredient.destroy({
+        where : {
+          productId : id
+        }
+      })
+
+      await Product.destroy({
         where: { id: +id },
       });
 
-      return res.send(productosModificados);
+      return res.redirect("/adm/products");
+
     } catch (error) {
       console.log(error);
     } //borrar el producto
