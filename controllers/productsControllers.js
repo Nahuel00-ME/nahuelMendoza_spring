@@ -90,11 +90,21 @@ const productsControllers = {
   editar: async (req, res) => {
     const { id } = req.params;
     try {
-      const product = products.findByPk({ id });
+
+      const [categories, sections, ingredientsDB, product] = await Promise.all([
+        Category.findAll(),
+        Section.findAll(),
+        Ingredient.findAll(),
+        Product.findByPk(id,{
+          include : ['ingredients']
+        })
+      ]) 
 
       return res.render("productos/productosEditar", {
-        categorias,
-        ...product,
+        ...product.dataValues,
+        categories,
+        sections,
+        ingredientsDB
       });
     } catch (error) {
       console.log(error);
@@ -102,29 +112,37 @@ const productsControllers = {
   }, //editar producto parte de administrador
   update: async (req, res) => {
     try {
-      const { nombre, descripcion, piezas, precio, categoria } = req.body;
-
-      const productosModificados = await products.findAll((product) => {
-        if (product.id === +req.params.id) {
-          product.nombre = nombre.trim();
-          product.descripcion = descripcion.trim();
-          product.piezas = +piezas;
-          product.precio = +precio;
-          product.categoria = categoria;
+      const { name, description, pieces, price, categoryId, sectionId, ingredients } = req.body;
+      
+      const product = await Product.findByPk(req.params.id)
+      
+      await Product.update(
+        {
+          name : name.trim(),
+          description : description.trim(),
+          pieces,
+          price,
+          categoryId,
+          sectionId,
+          image : req.file ? req.file.filename : product.image
+        },{
+          where : {
+            id : req.params.id
+          }
         }
-        return products;
-      });
+      )
 
-      await products.update(productosModificados, {
-        where: { id: +req.params.id },
-      });
+      if(ingredients){
+        const ingredientsIds = Array.isArray(ingredients) ? ingredients : [ingredients]
+       await product.setIngredients(ingredientsIds);
+      }
+      return res.redirect("/adm/products");
 
-      return res.redirect("admin");
+
     } catch (error) {
       console.log(error);
     }
-    {
-    }
+
   }, // donde guarda el archivo
   borrar: async (req, res) => {
     const { id } = req.params;

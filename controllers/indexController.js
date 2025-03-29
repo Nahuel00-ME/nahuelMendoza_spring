@@ -14,6 +14,7 @@ const indexController = {
 
       const [products, categories] = await Promise.all([
          db.Product.findAll({
+            order : ['id'],
             include : ['category']
          }),
          db.Category.findAll()
@@ -26,9 +27,7 @@ const indexController = {
       
    } catch (error) {
       console.log(error);
-      
    }
-   
   },
 
   admUsuarios: (req, res) => {
