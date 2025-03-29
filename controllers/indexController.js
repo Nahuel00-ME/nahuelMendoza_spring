@@ -30,12 +30,19 @@ const indexController = {
    }
   },
 
-  admUsuarios: (req, res) => {
-    const users = readJson("../db/users.json");
+  admUsuarios: async (req, res) => {
+    try {
+      const users = await db.User.findAll({
+        include : ['rol']
+      })
+      return res.render("partials/admUsers", {
+        users,
+      });
+    } catch (error) {
+      console.log(error);
+      
+    }
 
-    return res.render("partials/admUsers", {
-      users,
-    });
   },
 };
 
