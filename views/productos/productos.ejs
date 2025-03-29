@@ -14,17 +14,17 @@
     
         <h2 class="product-titulo">Seccion Rolls</h2>
             <div class="conteiner-roll">
-                <% roll.forEach(({id,nombre,precio,categoria,imagen}) => { %>
+                <% roll.forEach(({id,name,price,category,image}) => { %>
                     
                 <article>
                     <div class="producto">
                         <a href="/productos/detalle/<%= id %>">
-                            <img src="/images/<%= imagen %>" alt="producto">
+                            <img src="/images/<%= image %>" alt="producto">
                         
                             <div class="nombre">
-                                <p><%= nombre %></p></div>
+                                <p><%= name %></p></div>
                             <div class="precio">
-                               <span> <h2>$<%= precio %></h2></span>
+                               <span> <h2>$<%= price %></h2></span>
                             </div> 
                             <button type="submit" class="boton-comprar">Comprar</button>
                             
@@ -36,18 +36,18 @@
             </div>
             <h2 class="product-titulo">Seccion Niguiris</h2>
                 <div class="producto-niguiris">
-                    <% niguiri.forEach(({id,nombre,precio,categoria,imagen}) => { %>
+                    <% niguiri.forEach(({id,name,price,category,image}) => { %>
                         
                     <article class="conteiner-niguiris">
                         <div class="producto">
                             <a href="/productos/detalle/<%= id %>">
-                                <img src="/images/<%= imagen %>" alt="producto">
+                                <img src="/images/<%= image %>" alt="producto">
                             
                                 <div class="nombre">
-                                    <p><%= nombre %></p>
+                                    <p><%= name %></p>
                                 </div>
                                 <div class="precio">
-                                   <span> <h2>$<%= precio %></h2></span>
+                                   <span> <h2>$<%= price %></h2></span>
                                 </div> 
                                 
                                 <button type="submit" class="boton-comprar">Comprar</button>
