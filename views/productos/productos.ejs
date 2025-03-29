@@ -19,7 +19,7 @@
                 <article>
                     <div class="producto">
                         <a href="/productos/detalle/<%= id %>">
-                            <img src="/images/<%= image %>" alt="producto">
+                            <img src="/images/<%= image || 'default.png' %>" alt="producto">
                         
                             <div class="nombre">
                                 <p><%= name %></p></div>
@@ -41,7 +41,7 @@
                     <article class="conteiner-niguiris">
                         <div class="producto">
                             <a href="/productos/detalle/<%= id %>">
-                                <img src="/images/<%= image %>" alt="producto">
+                                <img src="/images/<%= image || 'default.png' %>" alt="producto">
                             
                                 <div class="nombre">
                                     <p><%= name %></p>

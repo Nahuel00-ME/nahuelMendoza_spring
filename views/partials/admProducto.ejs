@@ -22,23 +22,23 @@
                 </tr>                        
             </thead>
             <tbody>
-                <% product.forEach(({id,nombre,precio,piezas,categoria})=> { %>
+                <% products.forEach(({id,name,price,pieces,category})=> { %>
 
                     <tr>
                         <td>
                         <%=id %>
                     </td>
                     <td>
-                        <%= nombre %>
+                        <%= name %>
                     </td>
                     <td>
-                        $<%= precio %>
+                        $<%= price %>
                     </td>
                     <td>
-                        <%= piezas %> ud.
+                        <%= pieces %> ud.
                     </td>
                     <td>
-                        <%= categoria %>
+                        <%= category.name %>
                     </td>
                     <td>
                         <div>

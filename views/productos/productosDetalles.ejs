@@ -4,7 +4,7 @@
 <article class="detalleProducto">
     <div class="productoD">
         <div>
-        <img src="/images/<%= image %> " alt="california">
+        <img src="/images/<%= image || 'default.png' %> " alt="california">
 
     <div class="descripcion-producto">
         <p class="descripcion"> <span>Detalles del producto </span> :</p> 
@@ -14,6 +14,13 @@
     <div class="nombre-producto">
         <p class="nombre">Nombre del producto :</p>
         <h3 class="nombre"><%= name %></h3>
+    </div>
+    <div class="nombre-producto">
+        <p class="nombre">Ingredientes :</p>
+        <% ingredients.forEach(ingredient => { %>
+            <p><%= ingredient.name %></p>
+
+        <% }) %>
     </div>
   
     <div class="cantidad-piezas"> 
@@ -41,10 +48,6 @@
 
     <div class="conteiner-botonesDetalle">
     <a href="#" class="botones-detalle" id="botones-detalle">Comprar Ahora</a>
-    <a href="/products/editar/<%= id %>" class="botones-detalle">Editar Producto</a>
-    <form action="" method="POST" >
-        <a href="" class="botones-detalle">borrar</a>
-    </form>
     </div>
     </a>
     </div>

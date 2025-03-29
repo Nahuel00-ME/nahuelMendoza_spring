@@ -1,4 +1,4 @@
-const { Product, Category } = require("../db/database/models");
+const { Product, Category, Ingredient, Section, ProductIngredient } = require("../db/database/models");
 
 const productsControllers = {
   products: async (req, res) => {
@@ -15,16 +15,32 @@ const productsControllers = {
     }
   },
 
-  agregar: (req, res) => {
-    return res.render("productos/productsCrear", {
-      categorias,
-    });
+  agregar: async (req, res) => {
+
+    try {
+      const [categories, sections, ingredients] = await Promise.all([
+        Category.findAll(),
+        Section.findAll(),
+        Ingredient.findAll()
+      ]) 
+
+      return res.render("productos/productsCrear", {
+        categories,
+        sections,
+        ingredients
+      });
+    } catch (error) {
+      console.log(error)
+    }
+
   }, //crear el producto atraves del formulario
 
   detalle: async (req, res) => {
     try {
       const [product, categories] = await Promise.all([
-        Product.findByPk(req.params.id),
+        Product.findByPk(req.params.id,{
+          include : ['ingredients']
+        }),
         Category.findAll()
       ]) 
 
@@ -39,21 +55,33 @@ const productsControllers = {
 
   crear: async (req, res) => {
     try {
-      const { nombre, descripcion, piezas, precio, categoria } = req.body;
 
-      const nuevoProducto = {
-        id: products[products.length - 1].id + 1,
-        nombre: nombre.trim(),
-        descripcion: descripcion.trim(),
-        piezas: +piezas,
-        precio: +precio,
-        imagen: "default-image.png",
-        categoria,
-      };
+      const { name, description, pieces, price, categoryId, sectionId, ingredients } = req.body;
 
-      await products.create(nuevoProducto);
+      const product = await Product.create({
+        name : name.trim(),
+        description : description.trim(),
+        pieces,
+        price,
+        categoryId,
+        sectionId,
+        image : req.file ? req.file.filename : null
+      })
 
-      return res.redirect("/productos/detalle/" + nuevoProducto.id);
+      if(ingredients){
+
+        const ingredientsArray = Array.isArray(ingredients) ? ingredients : [ingredients]
+        await Promise.all(
+          ingredientsArray.map(async (ingredient) => {
+            return await ProductIngredient.create({
+              productId: product.id,
+              ingredientId: ingredient
+            });
+          })
+        );
+      }
+      
+      return res.redirect("/adm/products");
     } catch (error) {
       console.log(error);
     }
