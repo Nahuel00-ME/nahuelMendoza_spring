@@ -1,27 +1,26 @@
 [
   {
-    "nombre": "Nahuel",
-    "apellido": "Mendoza",
+    "name": "Nahuel",
+    "surname": "Mendoza",
     "email": "nahuel@gmail.com",
-    "contrasena": "$2b$10$L7WpTamQtCSdRqHldvRfzeKsWUGpqLKkTpMhBBaC.KiA3d7DiOk6C",  
+    "password": "$2b$10$L7WpTamQtCSdRqHldvRfzeKsWUGpqLKkTpMhBBaC.KiA3d7DiOk6C",  
     "rolId": 1
     
   },
   {
-    "nombre": "Ezequiel",
-    "apellido": "Mendoza",
+    "name": "Ezequiel",
+    "surname": "Mendoza",
     "email": "ezequiel11@gmail.com",
-    "contrasena": "$2b$10$L7WpTamQtCSdRqHldvRfzeKsWUGpqLKkTpMhBBaC.KiA3d7DiOk6C",
+    "password": "$2b$10$L7WpTamQtCSdRqHldvRfzeKsWUGpqLKkTpMhBBaC.KiA3d7DiOk6C",
     "rolId": 1
     
   },
   {
     
-    "nombre": "carlos",
-    "apellido": "pepa",
+    "name": "Carlos",
+    "surname": "pepa",
     "email": "carlos@pepa.com",
-    "contrasena": "$2b$10$L7WpTamQtCSdRqHldvRfzeKsWUGpqLKkTpMhBBaC.KiA3d7DiOk6C", 
-    
+    "password": "$2b$10$L7WpTamQtCSdRqHldvRfzeKsWUGpqLKkTpMhBBaC.KiA3d7DiOk6C", 
     "rolId": 2
   }
 ]

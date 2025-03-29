@@ -1,19 +1,17 @@
 'use strict';
 
-const { update } = require('../../../controllers/productsControllers');
-
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
-    await queryInterface.bulkInsert('categoria', [
+    await queryInterface.bulkInsert('categories', [
       {
-      nombre:"niguiris",
+      name:"Niguiris",
       createdAt: new Date(),
       updatedAt: new Date()
 
 
     }, {
-      nombre:"roll",
+      name:"Roll",
       createdAt: new Date(),
       updatedAt: new Date()
     }]);
@@ -22,6 +20,6 @@ module.exports = {
 
   async down (queryInterface, Sequelize) {
     
-      await queryInterface.bulkDelete('categorias', null, {});
+      await queryInterface.bulkDelete('categories', null, {});
        }
 };
