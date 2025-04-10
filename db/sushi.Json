@@ -2,10 +2,10 @@
   {
     "id": 1,
     "nombre": "Roll Tamago",
+    "descripcion": "Salmon , queso philadelphia envuelto en una masa de huevo",
     "piezas": 4,
     "precio": 500,
-    "imagen": "tamago.jpg",
-    "descripcion": "Salmon , queso , philadelphia envuelto en una masa de huevo"
+    "imagen": "tamago.jpg"
   },
   {
     "id": 2,
@@ -18,56 +18,57 @@
   {
     "id": 3,
     "nombre": "Roll New York Phila",
+    "descripcion": "Arroz , salmon, palta y queso philadelphia",
     "piezas": 10,
     "precio": 1450,
     "imagen": "newyorkphila.jpg",
-    "descripcion": "arroz , salmon, palta y queso philadelphia",
     "categoria": "roll"
   },
   {
     "id": 4,
     "nombre": "Roll Philadelphia",
+    "descripcion": "Arroz, queso philadelphia y salmon",
+    "piezas": 10,
     "precio": 450,
     "imagen": "philadephia.png",
-    "categoria": "roll",
-    "piezas": 10,
-    "descripcion": "arroz , queso philadelphia y salmon"
+    "categoria": "roll"
+    
   },
   {
     "id": 5,
     "nombre": "Roll California",
+    "descripcion": "Arroz, kanikama , queso philadelphia y palta",
     "piezas": 10,
     "precio": 800,
     "imagen": "california.png",
-    "descripcion": "arroz, kanikama , queso philadelphia y palta",
     "categoria": "roll"
   },
   {
     "id": 6,
     "nombre": "Roll teki",
+    "descripcion": "Arroz, salmon cocido con topping de batata",
     "piezas": 8,
     "precio": 1400,
     "imagen": "teki.png",
-    "categoria": "roll",
-    "descripcion": "arroz , salmon cocido con topping de batata"
+    "categoria": "roll"
   },
   {
     "id": 7,
     "nombre": "Roll Futurama",
+    "descripcion": "Arroz, langostino en tempura con topping de salsa de miel y mostaza",
     "piezas": 10,
     "precio": 600,
     "imagen": "futurama.png",
-    "categoria": "roll",
-    "descripcion": "arroz, langostino en tempura con topping de salsa de miel y mostaza"
+    "categoria": "roll"
   },
   {
     "id": 8,
     "nombre": "Roll Maki Salmon",
+    "descripcion": "Arroz, queso philadelphia y salmon envuelto en alga nori",
     "piezas": 10,
     "precio": 1600,
     "imagen": "makisphila.png",
-    "categoria": "roll",
-    "descripcion": "arroz , queso philadelphia y salmon envuelto en alga nori"
+    "categoria": "roll"
   },
   {
     "id": 9,
@@ -82,19 +83,19 @@
   {
     "id": 10,
     "nombre": "Niguiri de langostino",
+    "descripcion": "Bolita de arroz con langostinos blanqueado encima",
     "piezas": 5,
     "precio": 1200,
     "imagen": "nigirilangostino.png",
-    "descripcion": "bolita de arroz con langostinos blanqueado encima",
     "categoria": "niguiri"
   },
   {
     "id": 11,
     "nombre": "Niguiri de Salmon",
+    "descripcion": "Bolita de salmon con cubierta de salmon",
     "piezas": 5,
     "precio": 1300,
     "imagen": "Nigirisalmon.png",
-    "descripcion": "bolita de salmon con cubierta de salmon",
     "categoria": "niguiri"
   }
 ]

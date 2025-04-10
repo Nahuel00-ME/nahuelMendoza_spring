@@ -4,25 +4,36 @@
 <article class="detalleProducto">
     <div class="productoD">
         <div>
+<<<<<<< HEAD
         <img src="/images/<%= imagen %> " alt="producto">
+=======
+        <img src="/images/<%= image || 'default.png' %> " alt="california">
+>>>>>>> 6b344dfae3b31c1d4029edbcecf822fbd7bf128d
 
     <div class="descripcion-producto">
         <p class="descripcion"> <span>Detalles del producto </span> :</p> 
-        <h3 class="descripcion"><%= descripcion %> </h3>
+        <h3 class="descripcion"><%= description %> </h3>
     </div>
     </div>
     <div class="nombre-producto">
         <p class="nombre">Nombre del producto :</p>
-        <h3 class="nombre"><%= nombre %></h3>
+        <h3 class="nombre"><%= name %></h3>
+    </div>
+    <div class="nombre-producto">
+        <p class="nombre">Ingredientes :</p>
+        <% ingredients.forEach(ingredient => { %>
+            <p><%= ingredient.name %></p>
+
+        <% }) %>
     </div>
   
     <div class="cantidad-piezas"> 
         <p class="piezas"> Cantidad de piezas:</p>
-        <h3 class="piezas"> <%= piezas %></h3>
+        <h3 class="piezas"> <%= pieces %></h3>
     </div>
     <div class="precio-producto">
         <p class="precio">Precio del producto :</p>
-        <h3 class="precio-numero">$<%= precio %></h3> 
+        <h3 class="precio-numero">$<%= price %></h3> 
     </div>
     <ul class="listado-retiro">
         <li>
@@ -41,10 +52,6 @@
 
     <div class="conteiner-botonesDetalle">
     <a href="#" class="botones-detalle" id="botones-detalle">Comprar Ahora</a>
-    <a href="/products/editar/<%= id %>" class="botones-detalle">Editar Producto</a>
-    <form action="" method="POST" >
-        <a href="" class="botones-detalle">borrar</a>
-    </form>
     </div>
     </a>
     </div>

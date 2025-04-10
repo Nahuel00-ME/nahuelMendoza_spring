@@ -1,72 +1,66 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('products', {
+    await queryInterface.createTable("products", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
-      nombre: {
+      name: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
-      precio: {
+      price: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      piezas: {
+      pieces: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      imagen :{
+      image: {
         type: Sequelize.STRING,
         
       },
-     
-      seccionId: {
+
+      sectionId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model:{
-            tableName: 'seccions'
+          model: {
+            tableName: "sections",
           },
-          key: 'id'
-        }
+          key: "id",
         },
-      descripcionId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model:{
-            tableName: 'descripcions'
-          },
-          key: 'id'
-          }
       },
-      categoriaId: {
+      description: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
+      categoryId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model:{
-            tableName: 'categoria'
+          model: {
+            tableName: "categories",
           },
-          key: 'id'
-          }
+          key: "id",
+        },
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('products');
-  }
+    await queryInterface.dropTable("products");
+  },
 };
