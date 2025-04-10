@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Product extends Model {
     /**
@@ -10,36 +8,38 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Product.belongsTo(models.categoria, {
-        as: "categoria",
-        foreignKey: "categoriaId"
+      Product.belongsTo(models.Category, {
+        as: "category",
+        foreignKey: "categoryId",
       });
-      Product.belongsTo(models.descripcion, {
-        as: "descripcion",
-        foreignKey: "descripcionId"
+      Product.belongsTo(models.Section, {
+        as: "section",
+        foreignKey: "sectionId",
       });
-      Product.belongsTo(models.seccion, {
-        as: "seccion",
-        foreignKey: "seccionId"
-      });
-      Product.hasMany(models.imagen, {
-        as: "images",
-        foreignKey: "productsId"
+
+      Product.belongsToMany(models.Ingredient, {
+        through: "ProductIngredients",
+        foreignKey: "productId",
+        otherKey: "ingredientId",
+        as: "ingredients",
       });
     }
   }
 
-  Product.init({
-    nombre: DataTypes.STRING,
-    precio: DataTypes.INTEGER,
-    imagen: DataTypes.STRING,
-    piezas: DataTypes.INTEGER,
-    descripcionId: DataTypes.INTEGER,
-    categoriaId: DataTypes.INTEGER,
-    seccionId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Product',
-  });
+  Product.init(
+    {
+      name: DataTypes.STRING,
+      price: DataTypes.INTEGER,
+      image: DataTypes.STRING,
+      pieces: DataTypes.INTEGER,
+      description: DataTypes.INTEGER,
+      categoryId: DataTypes.INTEGER,
+      sectionId: DataTypes.INTEGER,
+    },
+    {
+      sequelize,
+      modelName: "Product",
+    }
+  );
   return Product;
 };

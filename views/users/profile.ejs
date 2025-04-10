@@ -1,31 +1,32 @@
 <%- include("../partials/head.ejs") %>
   
 
-<%-include("../partials/headerAdm.ejs") %>
+<%-include("../partials/header.ejs") %>
 
 <main>
     <div class="formPadre">
         <h2>Formulario de Editar Perfil</h2>
-        <form action="/submit" method="post" id="formCreate">
+        <form method="POST" id="formCreate">
          <div  class="subPadre"> 
             <div>
                 <label for="nombre" class="form-label">Nombre:</label>
-                <input type="text" id="nombre" name="nombre">
+                <input type="text" id="nombre" name="nombre" value="<%= user.name %>">
             </div>
             <div>
                 <label for="apellido" class="form-label">Apellido:</label>
-                <input type="text" id="apellido" name="apellido">
+                <input type="text" id="apellido" name="apellido"  value="<%= user.surname %>">
             </div>
             <div>
                 <label for="email" class="form-label">Email:</label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email"  value="<%= user.email %>">
             </div>
-            <div>
-                <label for="password" class="form-label">Contraseña:</label>
-                <input type="password" id="password" name="password">
-            </div>
+            
             <div>
                 <label for="avatar">Imagen:</label>
                 <input type="file" name="avatar" id="avatar" accept="images/*" >
             </div>
-            <div class="cajaButton"> </div>
+            <div class="cajaButton"> 
+                <button class="btn btn-primary">Actualizar datos</button>
+            </div>
+            </div>
+        </form>

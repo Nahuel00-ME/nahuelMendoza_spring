@@ -1,43 +1,49 @@
-const fs = require('fs');
-const path = require('path');
-const {readFile,readJson,saveJson } = require('../util/fileSystem');
-const product = require("../db/sushi.json")
-const categorias = require("../db/categorias.json");
-
+const db = require('../db/database/models')
 
 const indexController = {
+  index: (req, res) => {
+    return res.render("home");
+  },
 
-index:(req, res) =>{
-   return res.render("home") 
-},
+  admin: (req, res) => {
+    res.render("admin");
+  },
 
-admin:(req,res)=>{
-   
-   res.render("admin" , {
-      product
-   })
-},
+  admProductos: async (req, res) => {
+   try {
 
-admProductos :(req,res) => {
+      const [products, categories] = await Promise.all([
+         db.Product.findAll({
+            order : ['id'],
+            include : ['category']
+         }),
+         db.Category.findAll()
+      ])
 
-   
-   return res.render("partials/admProducto", {
-      categorias,product
-   })
-},
+      return res.render("partials/admProducto", {
+         categories,
+         products,
+       });
+      
+   } catch (error) {
+      console.log(error);
+   }
+  },
 
-admUsuarios: (req,res) => {
-   const users = readJson('../db/users.json')
+  admUsuarios: async (req, res) => {
+    try {
+      const users = await db.User.findAll({
+        include : ['rol']
+      })
+      return res.render("partials/admUsers", {
+        users,
+      });
+    } catch (error) {
+      console.log(error);
+      
+    }
 
-   return res.render("partials/admUsers",{
-      users
-   })
-},
-
-
-
-
-
+  },
 };
 
 module.exports = indexController;

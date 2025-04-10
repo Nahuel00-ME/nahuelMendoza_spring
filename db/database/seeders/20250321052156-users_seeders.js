@@ -4,14 +4,12 @@
 const path = require("path");
 const directory = path.join(__dirname, "../../users.json");
 const { readFile, parseFile } = require("../../../util/fileSystem");
-const bcrypt = require("bcrypt");
 const users = parseFile(readFile(directory));
 
 
 users.map((user) => {
   user.createdAt = new Date();
   user.updatedAt = new Date();
-  user.contrasena = bcrypt.hashSync(user.contrasena, 10);
 });
 
 module.exports = {

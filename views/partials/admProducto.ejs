@@ -22,36 +22,34 @@
                 </tr>                        
             </thead>
             <tbody>
-                <% product.forEach(({id,nombre,precio,piezas,categoria})=> { %>
+                <% products.forEach(({id,name,price,pieces,category})=> { %>
 
                     <tr>
                         <td>
                         <%=id %>
-                    </td>
-                    <td>
-                        <%= nombre %>
-                    </td>
-                    <td>
-                        $<%= precio %>
-                    </td>
-                    <td>
-                        <%= piezas %> ud.
-                    </td>
-                    <td>
-                        <%= categoria %>
-                    </td>
-                    <td>
-                        <div>
-                            <a href="/productos/editar/<%=id %>" class="btn-table">editar</a>
-                        </div>
-                        <form action="/productos/borrar/<%= id %>?_method=DELETE" method="POST">
-                            <button type="submit" class="btn-eliminar">borrar</button>
-                        </form>
-                        </div>
-                    </td>
-                    <td>
-                    </td>
-                </tr>
+                        </td>
+                        <td>
+                            <%= name %>
+                        </td>
+                        <td>
+                            $<%= price %>
+                        </td>
+                        <td>
+                            <%= pieces %> ud.
+                        </td>
+                        <td>
+                            <%= category.name %>
+                        </td>
+                        <td>
+                            <div>
+                                <a href="/productos/editar/<%=id %>" class="btn-table">editar</a>
+                            </div>
+                            <form action="/productos/borrar/<%= id %>?_method=DELETE" method="POST">
+                                <button type="submit" class="btn-eliminar">borrar</button>
+                            </form>
+                            </div>
+                        </td>
+                    </tr>
                     <% }) %>
             </tbody>
         </table>
