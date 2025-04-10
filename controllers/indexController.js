@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const {readFile,readJson,saveJson } = require('../util/fileSystem');
 const product = require("../db/sushi.json")
-const categorias = require("../db/categorias.json");
+
 
 
 const indexController = {
@@ -22,7 +22,7 @@ admProductos :(req,res) => {
 
    
    return res.render("partials/admProducto", {
-      categorias,product
+      product
    })
 },
 

@@ -1,4 +1,4 @@
-const { Product } = require('../db/database/models');
+const { Product , Imagen } = require('../db/database/models');
 
 const productsControllers =
 {
@@ -12,7 +12,7 @@ const productsControllers =
       console.log("niguiri: ",niguiri)
       return res.render("productos/productos", {
         niguiri,
-        roll
+        roll,Imagen
       })
     }
     catch (error) {
@@ -29,12 +29,15 @@ const productsControllers =
 
 
   detalle: async (req, res) => {
+    const id = req.params.id;
     try {
-      const product = await products.findByPk({ id })
+      const product = await Product.findByPk(id, {include:[{model: Imagen, as:'images'}]});
 
+      const imagen = product.images ? product.images.nombre : "default-image.png";
       return res.render('productos/productosDetalles', {
-        ...product,
-        categorias
+        imagen,
+        ...product.dataValues,
+      
       });
     }
     catch (error) {
