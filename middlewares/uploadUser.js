@@ -1,5 +1,5 @@
 const multer=require('multer');
-
+const path = require('path');
 
 const storageUser = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -10,6 +10,19 @@ const storageUser = multer.diskStorage({
     }
   })
   
-  const uploadUser = multer({ storage: storageUser })
+  const uploadUser = multer({  storage: storageUser,
+    limits: {
+        fileSize: 1024 * 1024 * 10 
+    },
+    fileFilter: function(req, file, cb) {
+        const extensionesValidas = ['jpg', 'jpeg', 'png', 'gif'];
+        const extension = path.extname(file.originalname).toLowerCase().replace('.', '');
+        if (extensionesValidas.includes(extension)) {
+            cb(null, true);
+        } else {
+            cb(new Error('Tipo de archivo no permitido'));
+        }
+    }
+}); 
 
 module.exports = uploadUser;

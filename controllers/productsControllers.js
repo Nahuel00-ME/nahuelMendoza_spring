@@ -1,11 +1,5 @@
-<<<<<<< HEAD
-const { Product , Imagen } = require('../db/database/models');
-
-const productsControllers =
-{
-=======
 const { Product, Category, Ingredient, Section, ProductIngredient } = require("../db/database/models");
->>>>>>> 6b344dfae3b31c1d4029edbcecf822fbd7bf128d
+const { validationResult } = require('express-validator')
 
 const productsControllers = {
   products: async (req, res) => {
@@ -15,18 +9,10 @@ const productsControllers = {
 
       return res.render("productos/productos", {
         niguiri,
-<<<<<<< HEAD
-        roll,Imagen
-      })
-    }
-    catch (error) {
-      console.log(error)
-=======
         roll,
       });
     } catch (error) {
       console.log(error);
->>>>>>> 6b344dfae3b31c1d4029edbcecf822fbd7bf128d
     }
   },
 
@@ -37,7 +23,7 @@ const productsControllers = {
         Category.findAll(),
         Section.findAll(),
         Ingredient.findAll()
-      ]) 
+      ])
 
       return res.render("productos/productsCrear", {
         categories,
@@ -53,26 +39,16 @@ const productsControllers = {
   detalle: async (req, res) => {
     const id = req.params.id;
     try {
-<<<<<<< HEAD
-      const product = await Product.findByPk(id, {include:[{model: Imagen, as:'images'}]});
-
-      const imagen = product.images ? product.images.nombre : "default-image.png";
-      return res.render('productos/productosDetalles', {
-        imagen,
-        ...product.dataValues,
-      
-=======
       const [product, categories] = await Promise.all([
-        Product.findByPk(req.params.id,{
-          include : ['ingredients']
+        Product.findByPk(req.params.id, {
+          include: ['ingredients']
         }),
         Category.findAll()
-      ]) 
+      ])
 
       return res.render("productos/productosDetalles", {
         ...product.dataValues,
         categories,
->>>>>>> 6b344dfae3b31c1d4029edbcecf822fbd7bf128d
       });
     } catch (error) {
       console.log(error);
@@ -81,38 +57,57 @@ const productsControllers = {
 
   crear: async (req, res) => {
     try {
-
-      const { name, description, pieces, price, categoryId, sectionId, ingredients } = req.body;
-
-      const product = await Product.create({
-        name : name.trim(),
-        description : description.trim(),
-        pieces,
-        price,
-        categoryId,
-        sectionId,
-        image : req.file ? req.file.filename : null
-      })
-
-      if(ingredients){
-
-        const ingredientsArray = Array.isArray(ingredients) ? ingredients : [ingredients]
-        await Promise.all(
-          ingredientsArray.map(async (ingredient) => {
-            return await ProductIngredient.create({
-              productId: product.id,
-              ingredientId: ingredient
-            });
+      const errors = validationResult(req);
+      const { id } = req.params;
+      if (!errors.isEmpty()) {
+        const [categories, sections, ingredientsDB, product] = await Promise.all([
+          Category.findAll(),
+          Section.findAll(),
+          Ingredient.findAll(),
+          Product.findByPk(id, {
+            include: ['ingredients']
           })
-        );
+        ])
+        return res.status(400).render("productos/productsCrear", {
+          errors: errors.mapped(),
+          sections,
+          categories,
+          ingredientsDB,
+          product
+        });
+      } else {
+        const { name, description, pieces, price, categoryId, sectionId, ingredients } = req.body;
+
+        const product = await db.Product.create({
+          name: name.trim(),
+          description: description.trim(),
+          pieces,
+          price,
+          categoryId,
+          sectionId,
+          image: req.file ? req.file.filename : null
+        });
+        if (ingredients) {
+
+          const ingredientsArray = Array.isArray(ingredients) ? ingredients : [ingredients];
+          await Promise.all(
+            ingredientsArray.map(async (ingredient) => {
+              return await ProductIngredient.create({
+                productId: product.id,
+                ingredientId: ingredient
+              });
+            })
+          );
+        }
+
+        return res.redirect("/adm/products");
       }
-      
-      return res.redirect("/adm/products");
+
+
     } catch (error) {
       console.log(error);
-    }
-  }, //guardar producto parte de administrador
-
+    } //guardar producto parte de administrador
+  },
   editar: async (req, res) => {
     const { id } = req.params;
     try {
@@ -121,10 +116,10 @@ const productsControllers = {
         Category.findAll(),
         Section.findAll(),
         Ingredient.findAll(),
-        Product.findByPk(id,{
-          include : ['ingredients']
+        Product.findByPk(id, {
+          include: ['ingredients']
         })
-      ]) 
+      ])
 
       return res.render("productos/productosEditar", {
         ...product.dataValues,
@@ -139,28 +134,28 @@ const productsControllers = {
   update: async (req, res) => {
     try {
       const { name, description, pieces, price, categoryId, sectionId, ingredients } = req.body;
-      
+
       const product = await Product.findByPk(req.params.id)
-      
+
       await Product.update(
         {
-          name : name.trim(),
-          description : description.trim(),
+          name: name.trim(),
+          description: description.trim(),
           pieces,
           price,
           categoryId,
           sectionId,
-          image : req.file ? req.file.filename : product.image
-        },{
-          where : {
-            id : req.params.id
-          }
+          image: req.file ? req.file.filename : product.image
+        }, {
+        where: {
+          id: req.params.id
         }
+      }
       )
 
-      if(ingredients){
+      if (ingredients) {
         const ingredientsIds = Array.isArray(ingredients) ? ingredients : [ingredients]
-       await product.setIngredients(ingredientsIds);
+        await product.setIngredients(ingredientsIds);
       }
       return res.redirect("/adm/products");
 
@@ -175,8 +170,8 @@ const productsControllers = {
     try {
 
       await ProductIngredient.destroy({
-        where : {
-          productId : id
+        where: {
+          productId: id
         }
       })
 

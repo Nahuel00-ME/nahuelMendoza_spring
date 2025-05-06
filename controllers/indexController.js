@@ -1,51 +1,13 @@
-<<<<<<< HEAD
-const fs = require('fs');
-const path = require('path');
-const {readFile,readJson,saveJson } = require('../util/fileSystem');
-const product = require("../db/sushi.json")
-
-
-=======
 const db = require('../db/database/models')
->>>>>>> 6b344dfae3b31c1d4029edbcecf822fbd7bf128d
 
 const indexController = {
   index: (req, res) => {
     return res.render("home");
   },
 
-<<<<<<< HEAD
-index:(req, res) =>{
-   return res.render("home") 
-},
-
-admin:(req,res)=>{
-   
-   res.render("admin" , {
-      product
-   })
-},
-
-admProductos :(req,res) => {
-
-   
-   return res.render("partials/admProducto", {
-      product
-   })
-},
-
-admUsuarios: (req,res) => {
-   const users = readJson('../db/users.json')
-
-   return res.render("partials/admUsers",{
-      users
-   })
-},
-=======
   admin: (req, res) => {
     res.render("admin");
   },
->>>>>>> 6b344dfae3b31c1d4029edbcecf822fbd7bf128d
 
   admProductos: async (req, res) => {
    try {

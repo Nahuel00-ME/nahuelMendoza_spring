@@ -4,11 +4,7 @@
 <article class="detalleProducto">
     <div class="productoD">
         <div>
-<<<<<<< HEAD
-        <img src="/images/<%= imagen %> " alt="producto">
-=======
-        <img src="/images/<%= image || 'default.png' %> " alt="california">
->>>>>>> 6b344dfae3b31c1d4029edbcecf822fbd7bf128d
+        <img src="/images/<%= image.lenght ? image[0].file : 'default.png' %> " alt="california">
 
     <div class="descripcion-producto">
         <p class="descripcion"> <span>Detalles del producto </span> :</p> 

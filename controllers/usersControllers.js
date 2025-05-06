@@ -65,16 +65,21 @@ const usersControllers = {
   },
 
   profile: async (req, res) => {
-
     try {
-        const user = await User.findByPk(req.session.user.id)
-        return res.render("users/profile",{
-            user
-        });
-
+      const user = await db.User.findByPk(req.session.userLogin.id, {
+        include: [
+          { association: 'rol'},
+          { association: 'address'}
+        ]
+      })
+            
+      return res.render('users/profile', {
+        user
+      })
     } catch (error) {
-        console.log(error);
-        
+      return res.status(500).render('error', {
+        message: error.message,
+      })
     }
   },
 
@@ -112,6 +117,20 @@ const usersControllers = {
       console.log(error);
     }
   },
-};
+
+  remove : async (req, res) => {
+    try {
+      await db.User.destroy({
+        where: {
+          id: req.params.id
+        }
+      })
+      return res.redirect('/admin/users')
+    } catch (error) {
+      return res.status(500).render('error', {
+        message: error.message,
+      })
+    }
+}};
 
 module.exports = usersControllers;

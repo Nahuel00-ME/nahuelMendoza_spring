@@ -9,6 +9,9 @@
   
   .caja1-form
   {
+    background-image: url('../images/inicio.png');
+    background-size: cover;
+
     display: flex;
     flex-direction: row;
     align-items: center;

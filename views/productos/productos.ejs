@@ -1,103 +1,122 @@
-<!DOCTYPE html>
-<html lang="en">
+   
+   <%- include("../partials/head.ejs") %>
+   <%- include("../partials/header.ejs") %>
+   <h2 class="product-nombre">Seccion Rolls</h2>
+<section class="productos-body">
+        <div class="conteiner-roll">
+            <% roll.forEach(({id,name,price,category,image})=> { %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="https://kit.fontawesome.com/97045d8aa4.js" crossorigin="anonymous"></script>
-    <title>Document</title>
-</head>
-
-<body>
-    <%-include("../partials/header.ejs") %>
-    
-        <h2 class="product-titulo">Seccion Rolls</h2>
-            <div class="conteiner-roll">
-                <% roll.forEach(({id,name,price,category,image}) => { %>
-                    
                 <article>
                     <div class="producto">
                         <a href="/productos/detalle/<%= id %>">
                             <img src="/images/<%= image || 'default.png' %>" alt="producto">
-                        
+
                             <div class="nombre">
-                                <p><%= name %></p></div>
+                                <p class="comentarios-descripcion">
+                                    <%= name %>
+                                </p class="comentarios-descripcion">
+                            </div>
                             <div class="precio">
-                               <span> <h2>$<%= price %></h2></span>
-                            </div> 
+                                <span>
+                                    <h2>$<%= price %>
+                                    </h2>
+                                </span>
+                            </div>
                             <button type="submit" class="boton-comprar">Comprar</button>
                             
                         </a>
-                        </div>
-                    </article>
+                    </div>
+                </article>
                 
-                    <% }) %>
+                <% }) %>
             </div>
-            <h2 class="product-titulo">Seccion Niguiris</h2>
-                <div class="producto-niguiris">
-                    <% niguiri.forEach(({id,name,price,category,image}) => { %>
-                        
+        </section>
+        <h2 class="product-nombre">Seccion Niguiris</h2>
+        <section class="productos-body">
+            <div class="producto-niguiris">
+                <% niguiri.forEach(({id,name,price,category,image})=> { %>
+                    
                     <article class="conteiner-niguiris">
                         <div class="producto">
                             <a href="/productos/detalle/<%= id %>">
                                 <img src="/images/<%= image || 'default.png' %>" alt="producto">
-                            
+                                
                                 <div class="nombre">
-                                    <p><%= name %></p>
+                                    <p class="comentarios-descripcion">
+                                        <%= name %>
+                                    </p class="comentarios-descripcion">
                                 </div>
                                 <div class="precio">
-                                   <span> <h2>$<%= price %></h2></span>
-                                </div> 
+                                    <span>
+                                        <h2>$<%= price %>
+                                        </h2>
+                                    </span>
+                                </div>
                                 
                                 <button type="submit" class="boton-comprar">Comprar</button>
                             </a>
-                            </div>
-                        </article>
+                        </div>
+                    </article>
                     
-                        <% }) %>
-            </div>
-           <section>
-            <div>
-            <h3 class="titulo-comentarios">comentarios de nuestros clientes</h3>
-            <div class="comentarios">
-                <p>Excelente calidad y servicio</p>
-                <p>Los mejores rolls de la ciudad</p>
-                <p>Recomendado</p>
-            </div>
-            <div class="comentarios">
-                <p>Excelente calidad y servicio</p>
-                <p>Los mejores rolls de la ciudad</p>
-                <p>Recomendado</p>
-            </div>
-            <div class="comentarios">
-                <p>Excelente calidad y servicio</p>
-                <p>Los mejores rolls de la ciudad</p>
-                <p>Recomendado</p>
-            </div>
-            <div class="comentarios">
-                <p>Excelente calidad y servicio</p>
-                <p>Los mejores rolls de la ciudad</p>
-                <p>Recomendado</p>
-            </div>
-            <div class="comentarios">
-                <p>Excelente calidad y servicio</p>
-                <p>Los mejores rolls de la ciudad</p>
-                <p>Recomendado</p>
-            </div>
-            <div class="comentarios">
-                <p>Excelente calidad y servicio</p>
-                <p>Los mejores rolls de la ciudad</p>
-                <p>Recomendado</p>
-            </div>
-            <div class="comentarios">
-                <p>Excelente calidad y servicio</p>
-                <p>Los mejores rolls de la ciudad</p>
-                <p>Recomendado</p>
-            </div>
-           </section>
-        </div>
-        <%-include("../partials/footer.ejs") %>
-    
+                    <% }) %>
+                </div>
+                
+            </section>
+            <h2 class="titulo-comentarios">Opiniones de clientes que ya probaron nuestro producto!</h2>
+            <div class="comentarios-padre">
 
-</html>
+                <div class="carousel-container">
+                <div class="carousel-inner">
+                    <div class="carousel-item">"La calidad del sushi aquí es incomparable.
+                        La textura y el sabor de cada rollo muestran la dedicación detrás de cada detalle.
+                        ¡Simplemente el mejor!"
+                        <p> Laura González"</p>
+                    </div>
+                    <div class="carousel-item">"Tuve la mejor experiencia culinaria de mi vida probando este sushi.
+                        Ingredientes frescos y combinaciones creativas.
+                        ¡Recomendado al 100%!" <p> Marcos Ramírez"</p>
+                    </div>
+                    <div class="carousel-item">"Cada bocado fue un viaje de sabores increíblemente bien
+                        equilibrados.
+                        Sin duda, este lugar se ha convertido en mi favorito."
+                        <p> Valentina López"</p>
+                    </div>
+
+                    <div class="carousel-item">"Desde la presentación hasta el sabor, todo estuvo impecable. Se nota la
+                        pasión detrás de cada creación.
+                        ¡Una experiencia que no se olvida!"
+                        <p>Rodrigo Fernández</p>
+                    </div>
+                    <div class="carousel-item">
+                        <p>"El sushi aquí supera todas las expectativas. Ingredientes de primera
+                            calidad y atención al detalle en cada plato.
+                            ¡Un verdadero deleite!"</p>
+                        <p> Sofía Martínez"</p>
+                    </div>
+                </div>
+                <div class="carousel-controls">
+                    <button class="prev-btn">Anterior</button>
+                    <button class="next-btn">Siguiente</button>
+                </div>
+
+                <div class="dots-container"></div>
+
+            </div>
+            <p>Dejanos tu Opinión</p>
+            <div class="formComentariosCaja">
+                <form id="formComentarios">
+                    <div><label for="name">Nombre:</label>
+                        <input type="text" id="name" name="name" required></div>
+                    <div><label for="comment">Comentario:</label>
+                        <textarea id="comment" name="comment" required></textarea></div>
+                    
+                    
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+        </div>
+        </section>
+        <script type="module" src="/javascripts/productos.js"></script>
+        
+    <%-include("../partials/footer.ejs") %>
+    

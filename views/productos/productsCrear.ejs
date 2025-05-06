@@ -1,45 +1,62 @@
 <%-include("../partials/head.ejs") %>
     <%-include("../partials/headerAdm.ejs") %>
 
-
-        <div>
-            <h2>Formulario de Crear Productos</h2>
-            <form action="/productos/create" class="row" method="post" id="formCreate">
-                <div class="subPadre">
-                    <div>
+    <section>
+    <h2>Formulario de Crear Productos</h2>
+        <div class="edicionProductos">
+            <form action="/productos/create" class="row" method="POST" enctype="multipart/form-data" id="formEdicion">
+                    <div class="rellenoInputs" >
                         <label for="nombre" class="form-label">Nombre::</label>
-                        <input type="text" id="nombre" name="name">
-                    </div>
-                    <div>
+                        <input type="text" id="nombre1" name="name">
+                        <span class="error" id="errorNombre1" data-error="name">
+                            <%=(locals.errors && locals.errors.name) && errors.name.msg %>
+                        </span>
+                    </div >
+                    <div class="rellenoInputs">
                         <label for="precio" class="form-label" value="0">Precio:</label>
-                        <input type="number" id="precio" name="price">
-                    </div>
-                    <div>
+                        <input type="number" id="precio1" name="price">
+                        <span class="error" data-error="price">
+                            <%=(locals.errors && locals.errors.price) && errors.price.msg %>
+                        </span>
+                    </div >
+                    <div class="rellenoInputs">
                         <label for="cantidad" class="form-label" value="0">Cantidad:</label>
-                        <input type="number" id="cantidad" name="pieces">
-                    </div>
-                    <div>
+                        <input type="number" id="cantidad1" name="pieces">
+                        <span class="error" data-error="pieces">
+                            <%=(locals.errors && locals.errors.pieces) && errors.pieces.msg %>
+                        </span>
+                    </div >
+                    <div class="rellenoInputs">
                         <label for="descuento" class="form-label">Descuento:</label>
-                        <input type="number" id="cantidad" name="discount">
-                    </div>
-                    <div>
+                        <input type="number" id="cantidad1" name="discount">
+                        <span class="error" data-error="discount">
+                           <%=(locals.errors && locals.errors.discount) && errors.discount.msg %>
+                        </span>
+                    </div >
+                    <div class="rellenoInputs">
                         <label for="descripcion" class="form-label">Descripción:</label>
-                        <textarea id="descripcion" name="description"></textarea>
-                    </div>
-                    <div>
-                        <label for="category" class="categoria">Categoría:</label>
-                        <select name="categoryId">
-                            <option value="" hidden selected>Seleccione...</option>
+                        <textarea id="descripcion1" name="description"></textarea>
+                        <span class="error" data-error="description">
+                            <%=(locals.errors && locals.errors.description) && errors.description.msg %>
+                        </span>
+                    </div >
+                    <div class="rellenoInputs">
+                        <label for="category" class="categoria1">Categoría:</label>
+                        <select name="categoryId" class="selectFlecha">
+                            <option value=""  hidden selected>Seleccione...</option>
                             <% categories.forEach(category=> { %>
                                 <option value="<%= category.id %>">
                                     <%= category.name %>
                                 </option>
                                 <% }) %>
                         </select>
-                    </div>
-                    <div>
-                        <label for="category" class="categoria">Sección:</label>
-                        <select name="sectionId">
+                        <span class="error" data-error="categoryId">
+                            <%=(locals.errors && locals.errors.categoryId) && errors.categoryId.msg %>
+                        </span>
+                    </div >
+                    <div class="rellenoInputs">
+                        <label for="category" class="section1">Sección:</label>
+                        <select name="sectionId" class="selectFlecha">
                             <option value="" hidden selected>Seleccione...</option>
                             <% sections.forEach(section=> { %>
                                 <option value="<%= section.id %>">
@@ -47,27 +64,34 @@
                                 </option>
                                 <% }) %>
                         </select>
-                    </div>
-                    <div>
-                        <div>
+                        <span class="error" data-error="sectionId">
+                            <%=(locals.errors && locals.errors.sectionId) && errors.sectionId.msg %>
+                        </span>
+                    </div >
+                    <div class="rellenoInputs">
+                        <div class="rellenoInputs">
+                            <% if (ingredients && ingredients.length > 0) { %>
                             <% ingredients.forEach(ingredient => { %>
-                                <label for="<%= ingredient.name + ingredient.id %>"><input type="checkbox" name="ingredients" id="<%= ingredient.name + ingredient.id %>" value="<%= ingredient.id %>"><%= ingredient.name %></label>
-
-                            <% }) %>
-                            
-                        </div>
-                    </div>
-                    <div>
+                                <label for="<%= ingredient.name + ingredient.id %>">
+                                    <input type="checkbox" name="ingredients" id="<%= ingredient.name + ingredient.id %>" 
+                                    value="<%= ingredient.id %>">
+                                    <%= ingredient.name %></label>
+                            <% }) %> 
+                        </div >
+                    </div >
+                    <div class="rellenoInputs">
                         <label for="file">Imagen:</label>
-                        <input type="file" name="image" id="avatar" accept="images/*">
-                    </div>
-                    <div class="cajaButton">
-                        <div>
+                        <input type="file" name="image" id="avatar1" accept="images/*">
+                        <span class="error" data-error="image">
+                            <%=(locals.errors && locals.errors.image) && errors.image.msg %>
+                        </span>
+                    </div >
+                    <div class="rellenoInputs" class="cajaButton">
                             <button type="submit" class="bCrear">Guardar</button>
 
-                        </div>
-                    </div>
+                        </div >
             </form>
-        </div>
-
+        </div >
+    </section>
+    <script src="../javascripts/productsValidationJS.js"></script>
         <%-include("../partials/footer.ejs") %>

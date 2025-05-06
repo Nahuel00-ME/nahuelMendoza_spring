@@ -1,17 +1,23 @@
 var express = require('express');
 var router = express.Router();
-const { login, register,procesoRegistro, procesoLogin,profile,logout, update} = require("../controllers/usersControllers");
+const   {login, register,procesoRegistro, procesoLogin,profile,logout, update, remove} = require("../controllers/usersControllers");
 const check=require("../middlewares/userSessionCheck");
-const checkAdmin=require("../middlewares/adminCheck");
-router.get('/login' ,login);
-router.post('/loginProceso', procesoLogin);
+const   uploadUser = require("../middlewares/uploadUser");
+const loginValidator = require('../validations/loginValidator');
+const registerValidator = require('../validations/registerValidator');
+
+
 
 router.get('/register', register);
-router.post('/register', procesoRegistro);
+router.post('/register',registerValidator ,procesoRegistro);
+
+router.get('/login' ,login);
+router.post('/loginProceso',loginValidator, procesoLogin);
+router.get('/logout',check,logout);
 
 router.get('/profile',check,profile);
-router.post ('/profile',update)
-router.get('/logout',check,logout);
+router.put('/profile/:id',uploadUser.single('image'),check,update);
+router.delete('/profile/:id',check, remove);
 
 
 module.exports = router;
