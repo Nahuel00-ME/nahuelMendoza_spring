@@ -6,7 +6,8 @@
 <main>
     <div class="formPadre">
         <h2>Formulario de Editar Perfil</h2>
-        <form method="POST" id="formCreate">
+        <form method="POST" id="formCreate" enctype="multipart/form-data" action="/users/profile/<%=user.id%>?_method=PUT">
+            <div class="cajaButton
          <div  class="subPadre"> 
             <div>
                 <label for="nombre" class="form-label">Nombre:</label>

@@ -16,7 +16,7 @@ router.post('/loginProceso',loginValidator, procesoLogin);
 router.get('/logout',check,logout);
 
 router.get('/profile',check,profile);
-router.put('/profile/:id',uploadUser.single('image'),check,update);
+router.put('/profile/:id',uploadUser.single('avatar'),check,update);
 router.delete('/profile/:id',check, remove);
 
 

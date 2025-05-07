@@ -40,13 +40,14 @@ const usersControllers = {
           error,
         });
       }
-
-      const { id, name, rol } = user;
+      console.log("login user", user);
+      
+      const { id, name, rolId } = user;
       req.session.user = {
         id,
         email,
         name,
-        rol,
+        rol:rolId,
       };
 
       res.locals.user = {
@@ -65,11 +66,13 @@ const usersControllers = {
   },
 
   profile: async (req, res) => {
+    console.log("profile",req.session.user);
+    
     try {
-      const user = await db.User.findByPk(req.session.userLogin.id, {
+      const user = await User.findByPk(req.session.user.id, {
         include: [
           { association: 'rol'},
-          { association: 'address'}
+          // { association: 'address'}
         ]
       })
             
@@ -77,6 +80,8 @@ const usersControllers = {
         user
       })
     } catch (error) {
+      console.log(error);
+      
       return res.status(500).render('error', {
         message: error.message,
       })
