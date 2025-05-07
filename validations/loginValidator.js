@@ -1,5 +1,5 @@
 const { check } = require("express-validator");
-const  { User } = require("..db/database/models");
+const  { User } = require("../db/database/models");
 const { compareSync } = require("bcrypt");
 
 const loginValidator = [
