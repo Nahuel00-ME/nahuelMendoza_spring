@@ -23,7 +23,7 @@ const productsControllers = {
         Category.findAll(),
         Section.findAll(),
         Ingredient.findAll()
-      ])
+      ]);
 
       return res.render("productos/productsCrear", {
         categories,
@@ -31,7 +31,7 @@ const productsControllers = {
         ingredients
       });
     } catch (error) {
-      console.log(error)
+      console.log("El formulario no pudo ser creado con exito",error)
     }
 
   }, //crear el producto atraves del formulario
@@ -59,13 +59,14 @@ const productsControllers = {
     try {
       const errors = validationResult(req);
       const { id } = req.params;
+      
       if (!errors.isEmpty()) {
         const [categories, sections, ingredientsDB, product] = await Promise.all([
           Category.findAll(),
           Section.findAll(),
           Ingredient.findAll(),
           Product.findByPk(id, {
-            include: ['ingredients']
+          include: ['ingredients']
           })
         ])
         return res.status(400).render("productos/productsCrear", {
@@ -78,7 +79,7 @@ const productsControllers = {
       } else {
         const { name, description, pieces, price, categoryId, sectionId, ingredients } = req.body;
 
-        const product = await db.Product.create({
+        const product = await Product.create({
           name: name.trim(),
           description: description.trim(),
           pieces,
@@ -105,7 +106,12 @@ const productsControllers = {
 
 
     } catch (error) {
-      console.log(error);
+      console.error("Error al crear el producto:", error);
+        return res.status(500).render("productos/productsCrear", {
+            errors: {
+                global: { msg: 'Hubo un error interno del servidor' }
+            }
+        });
     } //guardar producto parte de administrador
   },
   editar: async (req, res) => {
