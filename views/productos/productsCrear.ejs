@@ -2,47 +2,52 @@
     <%-include("../partials/headerAdm.ejs") %>
 
     <section>
+        <div class="caja1-form">
+            <div class="container-formulario">
     <h2>Formulario de Crear Productos</h2>
         <div class="edicionProductos">
-            <form action="/productos/create" class="row" method="POST" enctype="multipart/form-data" id="formEdicion">
-                    <div class="rellenoInputs" >
-                        <label for="nombre" class="form-label">Nombre::</label>
-                        <input type="text" id="nombre1" name="name">
-                        <span class="error" id="errorNombre1" data-error="name">
+            <form action="/productos/create" class="form-Add" method="POST" enctype="multipart/form-data" id="formCrear">
+                    <div  >
+                        <label for="nombre" class="form-label">Nombre:</label>
+                        <input type="text" id="nombre1" name="name" class="form-control <%=(locals.errors && locals.errors.name) && 'is-invalid' %> " >
+                        <p class="msg-error"  id="error-name">
                             <%=(locals.errors && locals.errors.name) && errors.name.msg %>
-                        </span>
+                        </p>
                     </div >
-                    <div class="rellenoInputs">
+
+
+                    <div >
                         <label for="precio" class="form-label" value="0">Precio:</label>
-                        <input type="number" id="precio1" name="price">
-                        <span class="error" data-error="price">
+                        <input type="number" id="precio1" name="price" class="form-control <%=(locals.errors && locals.errors.price) && 'is-invalid' %> " >
+                        <p class="msg-error" id="error-price">
                             <%=(locals.errors && locals.errors.price) && errors.price.msg %>
-                        </span>
+                        </p>
                     </div >
-                    <div class="rellenoInputs">
+
+                    <div >
                         <label for="cantidad" class="form-label" value="0">Cantidad:</label>
-                        <input type="number" id="cantidad1" name="pieces">
-                        <span class="error" data-error="pieces">
+                        <input type="number" id="pieces1" name="pieces" class="form-control <%=(locals.errors && locals.errors.pieces) && 'is-invalid' %> " >
+                        <p class="msg-error" id="error-pieces">
                             <%=(locals.errors && locals.errors.pieces) && errors.pieces.msg %>
-                        </span>
+                        </p>
                     </div >
-                    <div class="rellenoInputs">
+                    <div >
                         <label for="descuento" class="form-label">Descuento:</label>
-                        <input type="number" id="cantidad1" name="discount">
-                        <span class="error" data-error="discount">
+                        <input type="number" id="cantidad1" name="discount" class="form-control <%=(locals.errors && locals.errors.discount) && 'is-invalid' %> " >
+                        <p class="msg-error" id="error-discount">
                            <%=(locals.errors && locals.errors.discount) && errors.discount.msg %>
-                        </span>
+                        </p>
                     </div >
-                    <div class="rellenoInputs">
-                        <label for="descripcion" class="form-label">Descripción:</label>
-                        <textarea id="descripcion1" name="description"></textarea>
-                        <span class="error" data-error="description">
+                    <div >
+                        <label for="descripcion" >Descripción:</label>
+                        <textarea id="descripcion1" name="description" class="form-control <%=(locals.errors && locals.errors.description) && 'is-invalid' %> "></textarea>
+                        <p class="msg-error" id="error-description">
                             <%=(locals.errors && locals.errors.description) && errors.description.msg %>
-                        </span>
+                        </p>
                     </div >
-                    <div class="rellenoInputs">
-                        <label for="category" class="categoria1">Categoría:</label>
-                        <select name="categoryId" class="selectFlecha">
+                    <div >
+                        <label for="category" class="categoria1 ">Categoría:</label>
+                        <select name="categoryId" class="selectFlecha <%=(locals.errors && locals.errors.categoryId) && 'is-invalid' %> ">
                             <option value=""  hidden selected>Seleccione...</option>
                             <% categories.forEach(category=> { %>
                                 <option value="<%= category.id %>">
@@ -50,13 +55,13 @@
                                 </option>
                                 <% }) %>
                         </select>
-                        <span class="error" data-error="categoryId">
+                        <p class="msg-error" id="error-categoryId">
                             <%=(locals.errors && locals.errors.categoryId) && errors.categoryId.msg %>
-                        </span>
+                        </p>
                     </div >
-                    <div class="rellenoInputs">
+                    <div >
                         <label for="category" class="section1">Sección:</label>
-                        <select name="sectionId" class="selectFlecha">
+                        <select name="sectionId" class="selectFlecha <%=(locals.errors && locals.errors.selectId) && 'is-invalid' %>">
                             <option value="" hidden selected>Seleccione...</option>
                             <% sections.forEach(section=> { %>
                                 <option value="<%= section.id %>">
@@ -64,34 +69,42 @@
                                 </option>
                                 <% }) %>
                         </select>
-                        <span class="error" data-error="sectionId">
+                        <p class="msg-error" id="error-sectionId">
                             <%=(locals.errors && locals.errors.sectionId) && errors.sectionId.msg %>
-                        </span>
+                        </p>
                     </div >
-                    <div class="rellenoInputs">
-                        <div class="rellenoInputs">
+                    <div >
+                        <div >
                             <% if (ingredients && ingredients.length > 0) { %>
                             <% ingredients.forEach(ingredient => { %>
-                                <label for="<%= ingredient.name + ingredient.id %>">
-                                    <input type="checkbox" name="ingredients" id="<%= ingredient.name + ingredient.id %>" 
+                                <label for="<%= ingredient.name + ingredient.id %>">Ingredientes:
+
+                                    <input type="checkbox" class="ingredients <=%(local.errors && locals.errors.ingredient)&& 'is-invalid' %>" id="<%= ingredient.name + ingredient.id %>" 
                                     value="<%= ingredient.id %>">
                                     <%= ingredient.name %></label>
-                            <% }) %> 
+                            <% }) %>
+                            <% } %> 
                         </div >
                     </div >
-                    <div class="rellenoInputs">
+                    <div >
                         <label for="file">Imagen:</label>
-                        <input type="file" name="image" id="avatar1" accept="images/*">
-                        <span class="error" data-error="image">
+                        <input type="file" name="image" id="avatar1" accept="image/*">
+                        <img id="avatar1-preview" src="/images/sakumu.png" width="100px" height="100px" alt="Avatar">
+                        <p class="msg-error" id="error-image">
                             <%=(locals.errors && locals.errors.image) && errors.image.msg %>
-                        </span>
+                        </p>
                     </div >
-                    <div class="rellenoInputs" class="cajaButton">
+                    <div  class="cajaButton">
                             <button type="submit" class="bCrear">Guardar</button>
-
                         </div >
+                        <p id="errorForm"></p>
             </form>
         </div >
+        </div >
+        </div >
+    
+    <script src="../javascripts/productsValidationJS.js">
+    </script>
+    <script src="../javascrips/imagenCambio.js"></script>
     </section>
-    <script src="../javascripts/productsValidationJS.js"></script>
         <%-include("../partials/footer.ejs") %>

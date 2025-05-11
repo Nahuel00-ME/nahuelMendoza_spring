@@ -61,7 +61,7 @@ const productsControllers = {
       const { id } = req.params;
       
       if (!errors.isEmpty()) {
-        const [categories, sections, ingredientsDB, product] = await Promise.all([
+        const [categories, sections, ingredients, product] = await Promise.all([
           Category.findAll(),
           Section.findAll(),
           Ingredient.findAll(),
@@ -73,10 +73,10 @@ const productsControllers = {
           errors: errors.mapped(),
           sections,
           categories,
-          ingredientsDB,
+          ingredients,
           product
         });
-      } else {
+      } 
         const { name, description, pieces, price, categoryId, sectionId, ingredients } = req.body;
 
         const product = await Product.create({
@@ -102,9 +102,7 @@ const productsControllers = {
         }
 
         return res.redirect("/adm/products");
-      }
-
-
+      
     } catch (error) {
       console.error("Error al crear el producto:", error);
         return res.status(500).render("productos/productsCrear", {

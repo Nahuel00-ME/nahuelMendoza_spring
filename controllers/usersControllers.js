@@ -3,21 +3,33 @@ const { validationResult } = require("express-validator");
 const { User } = require("../db/database/models");
 
 const usersControllers = {
+
   register: (req, res) => {
     return res.render("users/register");
   },
 
   procesoRegistro: async (req, res) => {
     try {
-      const { nombre, apellido, email, contrasena } = req.body;
-      await User.create({
-        name: nombre.trim(),
-        surname: apellido.trim(),
-        email: email.trim(),
-        password: bcrypt.hashSync(contrasena, 10),
-        rolId: 2,
-      });
-      return res.redirect("/users/login");
+      const errors = validationResult(req);
+
+      if (errors.isEmpty()) {
+
+        const { nombre, apellido, email, contrasena } = req.body;
+        await User.create({
+          name: nombre.trim(),
+          surname: apellido.trim(),
+          email: email.trim(),
+          password: bcrypt.hashSync(contrasena, 10),
+          rolId: 2,
+          image: "predeterminada.jpg"
+        });
+        return res.redirect("/users/login");
+      } else {
+        return res.render("users/register", {
+          errores: errors.mapped(),
+          old: req.body,
+        });
+      }
     } catch (error) {
       console.log(error);
     }
@@ -28,87 +40,86 @@ const usersControllers = {
   },
   procesoLogin: async (req, res) => {
     const { email, contrasena } = req.body;
+
     try {
-      const user = await User.findOne({ where: { email } });
-      if (!user || !bcrypt.compareSync(contrasena, user.password)) {
-        const error = {
-          password : {
-            msg : "Credenciales invalidas",
-          } 
-        };
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
         return res.render("users/login", {
-          error,
-        });
+          errores: errors.mapped()
+        })}
+
+        const user = await User.findOne({ where: { email } });
+
+        console.log("login user", user);
+
+        const { id, name, rolId } = user;
+        req.session.user = {
+          id,
+          email,
+          name,
+          rol: rolId,
+        };
+
+        res.locals.user = {
+          ...req.session.user,
+        };
+        res.cookie(
+          "user",
+          { ...req.session.user },
+          { maxAge: 1000 * 60 * 60 * 24 * 90 }
+        );
+
+        return res.redirect("/");
+      } catch (error) {
+        console.log(error);
       }
-      console.log("login user", user);
-      
-      const { id, name, rolId } = user;
-      req.session.user = {
-        id,
-        email,
-        name,
-        rol:rolId,
-      };
-
-      res.locals.user = {
-        ...req.session.user,
-      };
-      res.cookie(
-        "user",
-        { ...req.session.user },
-        { maxAge: 1000 * 60 * 60 * 24 * 90 }
-      );
-
-      return res.redirect("/");
-    } catch (error) {
-      console.log(error);
-    }
-  },
+    },
 
   profile: async (req, res) => {
-    console.log("profile",req.session.user);
-    
+    console.log("profile", req.session.user);
+
     try {
       const user = await User.findByPk(req.session.user.id, {
         include: [
-          { association: 'rol'},
+          { association: 'rol' },
           // { association: 'address'}
         ]
       })
-            
+
       return res.render('users/profile', {
         user
       })
     } catch (error) {
       console.log(error);
-      
+
       return res.status(500).render('error', {
         message: error.message,
       })
     }
   },
 
-  update : async (req,res) => {
+  update: async (req, res) => {
     try {
-        const { nombre, apellido, email } = req.body;
+      const { nombre, apellido, email } = req.body;
+        image = req.file ? req.file.filename : req.session.user.image;
+      User.update(
+        {
+          name: nombre.trim(),
+          surname: apellido.trim(),
+          email: email.trim(),
+          image
+        },
+        {
+          where: {
+            id: req.session.user.id
+          }
+        }
+      )
+      return res.redirect('/users/profile')
 
-        User.update(
-            {
-                name: nombre.trim(),
-                surname: apellido.trim(),
-                email: email.trim(),
-            },
-            {
-                where : {
-                    id : req.session.user.id
-                }
-            }
-        )
-        return res.redirect('/users/profile')
-        
     } catch (error) {
-        console.log(error);
-        
+      console.log(error);
+
     }
 
   },
@@ -123,7 +134,7 @@ const usersControllers = {
     }
   },
 
-  remove : async (req, res) => {
+  remove: async (req, res) => {
     try {
       await db.User.destroy({
         where: {
@@ -136,6 +147,7 @@ const usersControllers = {
         message: error.message,
       })
     }
-}};
+  }
+};
 
 module.exports = usersControllers;

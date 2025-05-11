@@ -15,12 +15,14 @@ const storageUser = multer.diskStorage({
         fileSize: 1024 * 1024 * 10 
     },
     fileFilter: function(req, file, cb) {
+      console.log("aca esta",file)
         const extensionesValidas = ['jpg', 'jpeg', 'png', 'gif'];
         const extension = path.extname(file.originalname).toLowerCase().replace('.', '');
         if (extensionesValidas.includes(extension)) {
             cb(null, true);
         } else {
-            cb(new Error('Tipo de archivo no permitido'));
+          req.imageError = 'fallo la subida del archivo';
+            cb(null , false);
         }
     }
 }); 

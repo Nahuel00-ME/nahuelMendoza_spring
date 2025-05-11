@@ -1,195 +1,182 @@
-// Función para validar el nombre
-function validarNombre() {
-    const nombre = document.getElementById('nombre1');
-    const errorNombre = document.getElementById('errorNombre1');
-    
-    if (!nombre.value.trim()) {
-        errorNombre.textContent = 'El nombre es requerido';
-        return false;
-    }
-    
-    if (nombre.value.length < 3 || nombre.value.length > 100) {
-        errorNombre.textContent = 'El nombre debe tener entre 3 y 100 caracteres';
-        return false;
-    }
-    
-    errorNombre.textContent = '';
-    return true;
-}
 
-// Función para validar el precio
-function validarPrecio() {
-    const precio = document.getElementById('precio1');
-    const errorPrecio = document.querySelector('[data-error="price"]');
-    
-    if (!precio.value) {
-        errorPrecio.textContent = 'El precio es requerido';
-        return false;
-    }
-    
-    if (isNaN(precio.value) || precio.value <= 0) {
-        errorPrecio.textContent = 'El precio debe ser un número positivo';
-        return false;
-    }
-    
-    errorPrecio.textContent = '';
-    return true;
-}
+const errorFrase = (e) => document.getElementById(e);
 
-// Función para validar la cantidad
-function validarCantidad() {
-    const cantidad = document.getElementById('cantidad1');
-    const errorCantidad = document.querySelector('[data-error="pieces"]');
-    
-    if (!cantidad.value) {
-        errorCantidad.textContent = 'La cantidad es requerida';
-        return false;
-    }
-    
-    if (isNaN(cantidad.value) || cantidad.value <= 0) {
-        errorCantidad.textContent = 'La cantidad debe ser un número positivo';
-        return false;
-    }
-    
-    errorCantidad.textContent = '';
-    return true;
-}
 
-// Función para validar el descuento
-function validarDescuento() {
-    const descuento = document.getElementById('cantidad1');
-    const errorDescuento = document.querySelector('[data-error="discount"]');
-    
-    if (descuento.value && (isNaN(descuento.value) || descuento.value < 0 || descuento.value > 100)) {
-        errorDescuento.textContent = 'El descuento debe ser entre 0 y 100';
-        return false;
-    }
-    
-    errorDescuento.textContent = '';
-    return true;
-}
+const formCrear = document.getElementById('formCrear');
+const inputNombre = document.getElementById('nombre1');
+const inputPrecio = document.getElementById('precio1');
+const inputCantidad = document.getElementById('cantidad1');
+const inputPieces = document.getElementById('pieces1');
+const selectCategory = document.getElementById('category1');
+const selectSection = document.getElementById('section1');
+const textareaDescripcion = document.getElementById('descripcion1');
+const checkboxIngredientes = document.querySelectorAll('input[type="checkbox"]');
+const inputImagen = document.getElementById('avatar1');
 
-// Función para validar la descripción
-function validarDescripcion() {
-    const descripcion = document.getElementById('descripcion1');
-    const errorDescripcion = document.querySelector('[data-error="description"]');
+inputNombre.addEventListener('blur' , function() {
+    switch (true) {
+        case this.value,length < 3:
+            this.classList.add('is-invalid');
+            errorFrase('error-nombre').innerHTML = 'El nombre debe tener al menos 3 caracteres';
+            break;
+        case this.value,length > 100:
+            this.classList.add('is-invalid');
+            errorFrase('error-nombre').innerHTML = 'El nombre debe tener menos de 100 caracteres';
+            break;
     
-    if (descripcion.value.length > 500) {
-        errorDescripcion.textContent = 'La descripción no puede exceder 500 caracteres';
-        return false;
-    }
-    
-    errorDescripcion.textContent = '';
-    return true;
-}
+        default:
 
-// Función para validar la categoría
-function validarCategoria() {
-    const categoria = document.querySelector('select[name="categoryId"]');
-    const errorCategoria = document.querySelector('[data-error="categoryId"]');
-    
-    if (categoria.value === '') {
-        errorCategoria.textContent = 'Debe seleccionar una categoría';
-        return false;
+            this.classList.remove('is-invalid');
+            this.classList.add('is-valid');
+           errorFrase('error-nombre').innerHTML = null;
+            break;
     }
-    
-    errorCategoria.textContent = '';
-    return true;
-}
 
-// Función para validar la sección
-function validarSeccion() {
-    const seccion = document.querySelector('select[name="sectionId"]');
-    const errorSeccion = document.querySelector('[data-error="sectionId"]');
-    
-    if (seccion.value === '') {
-        errorSeccion.textContent = 'Debe seleccionar una sección';
-        return false;
+})
+inputPrecio.addEventListener('blur' , function() {
+    switch (true) {
+        case this.value.length < 1:
+            this.classList.add('is-invalid');
+            errorFrase('error-precio').innerHTML = 'El precio no puede estar vacío';
+            break;
+        case this.value < 0:
+            this.classList.add('is-invalid');
+            errorFrase('error-precio').innerHTML = 'El precio no puede ser negativo';
+            break;
+        default:
+            this.classList.remove('is-invalid');
+            this.classList.add('is-valid');
+           errorFrase('error-precio').innerHTML = null;
+            break;
     }
-    
-    errorSeccion.textContent = '';
-    return true;
-}
 
-// Función para validar los ingredientes
-function validarIngredientes() {
-    const ingredientes = document.querySelectorAll('input[name="ingredients"]');
-    const errorIngredientes = document.querySelector('[data-error="ingredients"]');
-    
-    const seleccionados = Array.from(ingredientes).filter(ing => ing.checked).length;
-    
-    if (seleccionados < 1) {
-        errorIngredientes.textContent = 'Debe seleccionar al menos un ingrediente';
-        return false;
-    }
-    
-    errorIngredientes.textContent = '';
-    return true;
-}
+})
 
-// Función para validar la imagen
-function validarImagen() {
-    const imagen = document.getElementById('avatar1');
-    const errorImagen = document.querySelector('[data-error="image"]');
-    
-    if (!imagen.files.length) {
-        errorImagen.textContent = 'Debe seleccionar una imagen';
-        return false;
+inputCantidad.addEventListener('blur' , function() {
+    switch (true) {
+        case this.value.length < 1:
+            this.classList.add('is-invalid');
+            errorFrase('error-cantidad').innerHTML = 'La cantidad no puede estar vacía';
+            break;
+        case this.value < 0:
+            this.classList.add('is-invalid');
+            errorFrase('error-cantidad').innerHTML = 'La cantidad no puede ser negativa';
+            break;
+        default:
+            this.classList.remove('is-invalid');
+            this.classList.add('is-valid');
+           errorFrase('error-cantidad').innerHTML = null;
+            break;
     }
-    
-    const fileSize = imagen.files[0].size / 1024 / 1024; // Tamaño en MB
-    if (fileSize > 5) {
-        errorImagen.textContent = 'La imagen no puede exceder 5MB';
-        return false;
-    }
-    
-    errorImagen.textContent = '';
-    return true;
-}
 
-// Función principal para validar el formulario
-function validarFormulario(event) {
-    event.preventDefault();
-    
-    const validaciones = [
-        validarNombre(),
-        validarPrecio(),
-        validarCantidad(),
-        validarDescuento(),
-        validarDescripcion(),
-        validarCategoria(),
-        validarSeccion(),
-        validarIngredientes(),
-        validarImagen()
-    ];
-    
-    if (validaciones.every(v => v)) {
-        document.getElementById('formEdicion').submit();
-    }
-}
+})  
 
-// Agregar los event listeners
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('formEdicion');
-    
-    // Validación en tiempo real
-    form.addEventListener('input', (e) => {
-        switch(e.target.id) {
-            case 'nombre1':
-                validarNombre();
-                break;
-            case 'precio1':
-                validarPrecio();
-                break;
-            case 'cantidad1':
-                validarCantidad();
-                break;
-            case 'descripcion1':
-                validarDescripcion();
-                break;
+inputPieces.addEventListener('blur' , function() {
+    switch (true) {
+        case this.value.length < 1:
+            this.classList.add('is-invalid');
+            errorFrase('error-pieces').innerHTML = 'La cantidad no puede estar vacía';
+            break;
+        case this.value < 0:
+            this.classList.add('is-invalid');
+            errorFrase('error-pieces').innerHTML = 'La cantidad no puede ser negativa';
+            break;
+        default:
+            this.classList.remove('is-invalid');
+            this.classList.add('is-valid');
+           errorFrase('error-pieces').innerHTML = null;
+            break;
+    }
+
+})
+textareaDescripcion.addEventListener('blur' , function() {
+    switch (true) {
+        case this.value.length < 20:
+            this.classList.add('is-invalid');
+            errorFrase('error-descripcion').innerHTML = 'La descripción debe tener al menos 20 caracteres';
+            break;
+        case this.value.length > 500:
+            this.classList.add('is-invalid');
+            errorFrase('error-descripcion').innerHTML = 'La descripción debe tener menos de 500 caracteres';
+            break;
+        default:
+            this.classList.remove('is-invalid');
+            this.classList.add('is-valid');
+           errorFrase('error-descripcion').innerHTML = null;
+            break;
+    }
+
+})
+selectCategory.addEventListener('blur' , function() {
+    switch (true) {
+        case this.value.length < 1:
+            this.classList.add('is-invalid');
+            errorFrase('error-category').innerHTML = 'La categoría no puede estar vacía';
+            break;
+        default:
+            this.classList.remove('is-invalid');
+            this.classList.add('is-valid');
+           errorFrase('error-category').innerHTML = null;
+            break;
+    }
+
+})
+selectSection.addEventListener('blur' , function() {
+    switch (true) {
+        case this.value.length < 1:
+            this.classList.add('is-invalid');
+            errorFrase('error-section').innerHTML = 'La sección no puede estar vacía';
+            break;
+        default:
+            this.classList.remove('is-invalid');
+            this.classList.add('is-valid');
+           errorFrase('error-section').innerHTML = null;
+            break;
+    }
+
+})
+inputImagen.addEventListener('blur' , function() {
+    switch (true) {
+        case this.value.length < 1:
+            this.classList.add('is-invalid');
+            errorFrase('error-imagen').innerHTML = 'La imagen no puede estar vacía';
+            break;
+        default:
+            this.classList.remove('is-invalid');
+            this.classList.add('is-valid');
+           errorFrase('error-imagen').innerHTML = null;
+            break;
+    }
+
+})
+checkboxIngredientes.forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+        if (this.checked) {
+            this.classList.add('is-valid');
+            errorFrase('error-ingredientes').innerHTML = null;
+        } else {
+            this.classList.remove('is-valid');
+            errorFrase('error-ingredientes').innerHTML = 'Debe seleccionar al menos un ingrediente';
         }
     });
-    
-    // Validación al enviar el formulario
-    form.addEventListener('submit', validarFormulario);
 });
+
+
+formCrear.addEventListener('submit', function(event) {
+    let errors = false;
+    let elementForm = this.elements;
+    for (let i = 0; i < elementForm.length; i++) {
+        if ( elementForm[i].value ==""|| elementForm[i].classList.contains('is-invalid')) {
+            errors = true;
+            break;
+        }
+    }
+
+    if (error){
+    event.preventDefault();
+    errorFrase('errorForm').innerHTML = 'Por favor, corrige los errores antes de enviar el formulario.';
+
+}},
+        formCrear.submit()
+);
+

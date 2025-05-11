@@ -8,13 +8,12 @@
                         <form action="/users/register" method="POST">
                             <div>
                                 <label for="nombre">nombre:</label>
-                                <input type="text" id="nombre" name="nombre" value="<%= locals.nombre ? nombre :""  %>" >
+                                <input type="text" id="nombre" name="nombre" value="<%= locals.nombre ? nombre :null  %>" >
                             </div>
+                            
                             <% if(locals.errores && locals.errores.nombre) {%>
                                 <p class="msg-error"> <i class="fa-solid fa-circle-exclamation"></i><%= errores.nombre.msg %></p>
                               <% } %>
-
-
                             <div>
                                 <label for="apellido">Apellido:</label>
                                 <input type="text" id="apellido" name="apellido" value="<%= locals.apellido ? apellido : "" %>">
@@ -27,18 +26,18 @@
 
                             <div>
                                 <label for="contrasena">Contraseña:</label>
-                                <input type="password" id="contrasena" name="contrasena" value="<%= locals.contrasena ? contrasena : "" %>>
+                                <input type="password" id="contrasena" name="contrasena" >
                             </div>
-                            <% if(locals.errores && locals.errores.contraseña) {%>
+                            <% if(locals.errores && locals.errores.contrasena) {%>
                                 <p class="msg-error"> <i class="fa-solid fa-circle-exclamation"></i><%= errores.contrasena.msg %></p>
                               <% } %>
 
 
                             <div>
                                 <label for="contrasena">Repetir Contraseña:</label>
-                                <input type="password" id="contrasena" name="contrasena2" value="<%= locals.contrasena2 ? contrasena2 : "" %>>
+                                <input type="password" id="contrasena" name="contrasena2" >
                             </div>
-                            <% if(locals.errores && locals.errores.contraseña2) {%>
+                            <% if(locals.errores && locals.errores.contrasena2) {%>
                                 <p class="msg-error"> <i class="fa-solid fa-circle-exclamation"></i><%= errores.contrasena2.msg %></p>
                               <% } %>
 

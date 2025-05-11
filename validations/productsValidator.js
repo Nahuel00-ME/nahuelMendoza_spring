@@ -18,8 +18,8 @@ const productValidation = [
     .custom(value => value >= 0).withMessage('La cantidad no puede ser negativa'),
   
   check('description')
-    .optional()
-    .isLength({ max: 500 }).withMessage('La descripción debe tener entre 20 y 500 caracteres'),
+  .not().isEmpty().withMessage('La descripción no puede estar vacía')
+    .isLength({ min: 10 ,max: 500 }).withMessage('La descripción debe tener entre 20 y 500 caracteres'),
   
   check('image')
     .optional()

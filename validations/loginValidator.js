@@ -4,25 +4,26 @@ const { compareSync } = require("bcrypt");
 
 const loginValidator = [
     check("email")
-        .notEmpty().withMessage("El email es requerido"),
-    check("password")
+        .notEmpty().withMessage("El email es requerido").bail()
+        .isEmail().withMessage("El email no es válido").bail(),
+    check("contrasena")
         .notEmpty().withMessage("La contraseña es requerida").bail()
-        .custom((value, { req }) => {
-            return User.findOne({ where: { email: req.body.email } })
-            .then((user) => {                
-                if (!user || !compareSync(value, user.password)) {
+        .custom(async (value, { req }) => {
+            try{
+            const user = await User.findOne({ where: { email: req.body.email } })
+                   if (!user || !compareSync(value, user.password)) {
                     return Promise.reject(
                       new Error("Las credenciales son inválidas")
                     );
                 }
-            })
-            .catch((error) => {
+            }
+          catch(error){
                 console.log(error);       
                 return Promise.reject(
-                    new Error(error ? errors.message : "Error al verificar las credenciales")
+                    new Error(error ? error.message : "Error al verificar las credenciales")
                 );
-            })
-        })
+            }})
+        
 ]
 
 module.exports = loginValidator

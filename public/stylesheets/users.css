@@ -47,3 +47,10 @@
    {
     opacity: 0.8;
   }
+
+
+  .msg-error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+  }
