@@ -9,6 +9,13 @@
   background-image: url('../images/fondoProductos.jpg');
   background-size: cover;
 }
+
+.mierda :hover{
+  box-shadow: 0 0 10px rgba(214, 16, 16, 0.575);
+  border: 4px solid #fff;
+  transition: 0.5em; 
+  transform: scale(1.05);
+}
 .conteiner-productos section {
   display: flex;
   flex-direction: column;
@@ -70,19 +77,7 @@
   margin: 10px 0;
 }
 
-.producto .boton-comprar {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: #e67e22;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-}
 
-.producto .boton-comprar:hover {
-  background-color: #d35400;
-}
 
 
 .conteiner-roll {
@@ -92,6 +87,8 @@
   margin-left: 10px;
 
 }
+
+
 
 .producto-niguiris {
   display: flex;

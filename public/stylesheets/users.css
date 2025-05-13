@@ -3,7 +3,7 @@
     padding: 38px 50px 38px 50px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 100px;  
+    margin: 27px 292px 54px 292px;  
     box-sizing: border-box;
   }
   
@@ -53,4 +53,26 @@
     color: red;
     font-size: 14px;
     margin-top: 5px;
+  }
+
+
+  .container-formulario1 {
+    background-color: white;
+    padding: 25px 30px 35px 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 80px;  
+    box-sizing: border-box;
+  }
+  
+  .caja-form
+  {
+       display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .container-formulario1 form{
+    display: flex;
+    flex-direction: column;
   }

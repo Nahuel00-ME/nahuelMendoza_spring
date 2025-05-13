@@ -89,7 +89,10 @@
                     <div >
                         <label for="file">Imagen:</label>
                         <input type="file" name="image" id="avatar1" accept="image/*">
-                        <img id="avatar1-preview" src="/images/sakumu.png" width="100px" height="100px" alt="Avatar">
+                        <img id="avatar1" src="/images/placeholder.png" alt="Avatar Preview">
+                        <div id="avatar1Preview" class="avatar-preview">
+
+                        </div>
                         <p class="msg-error" id="error-image">
                             <%=(locals.errors && locals.errors.image) && errors.image.msg %>
                         </p>
@@ -102,9 +105,9 @@
         </div >
         </div >
         </div >
-    
-    <script src="../javascripts/productsValidationJS.js">
-    </script>
-    <script src="../javascrips/imagenCambio.js"></script>
+        
     </section>
-        <%-include("../partials/footer.ejs") %>
+    <script src="/javascripts/productsValidationsJS.js">
+    </script>
+    <script src="/javascripts/imagenCambio.js"></script>
+    <%-include("../partials/footer.ejs") %>

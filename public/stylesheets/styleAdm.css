@@ -1,6 +1,7 @@
 
 
 
+
 a {
     color: black;
   }
@@ -23,7 +24,8 @@ header {
     font-weight: bold;
     color: #fff;
     text-decoration: none;
-}
+
+  }
 #sakumu2 {
   padding: 0px 25px;
   font-size: 30px;
@@ -38,7 +40,7 @@ header {
       width: 100%;
       height: 58px;
       box-sizing: border-box;
-      background-color: rgb(205, 92, 92);
+      background-color: #333(205, 92, 92);
       border: 1px solid rgb(255, 215, 0)
   }
   
@@ -65,9 +67,9 @@ header {
     text-decoration: none;
     color: rgb(255, 255, 255);
     line-height: 55px;
-    font-size: 20px;
+    font-size: 12px;
     font-weight: bold;
-    padding: 0px 15px;
+    padding: 0px 10px;
 }
   
   
@@ -182,3 +184,35 @@ table th {
     border: 2px solid red;
     box-shadow: 2px 2px 5px red;
   }
+ 
+.logoAdm {
+    padding: 0px 10px;
+    height: 52px;
+    float: left;
+    width: 55px;
+    border-radius: 18px;
+}
+
+.letrasAltas {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+
+.letrasBajas {
+    text-transform: lowercase;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}	
+
+.letras {
+    text-transform: lowercase;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}

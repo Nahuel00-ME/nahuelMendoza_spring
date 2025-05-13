@@ -1,12 +1,16 @@
    
    <%- include("../partials/head.ejs") %>
+   <% if(locals.user && locals.user.rol == 1){ %>
+    <%-include("../partials/headerAdm.ejs") %>
+    <% }else{%>
    <%- include("../partials/header.ejs") %>
+        <% } %>
    <h2 class="product-nombre">Seccion Rolls</h2>
 <section class="productos-body">
         <div class="conteiner-roll">
             <% roll.forEach(({id,name,price,category,image})=> { %>
 
-                <article>
+                <article class="mierda">
                     <div class="producto">
                         <a href="/productos/detalle/<%= id %>">
                             <img src="/images/<%= image || 'default.png' %>" alt="producto">
@@ -14,7 +18,7 @@
                             <div class="nombre">
                                 <p class="comentarios-descripcion">
                                     <%= name %>
-                                </p class="comentarios-descripcion">
+                                </p>
                             </div>
                             <div class="precio">
                                 <span>

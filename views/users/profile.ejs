@@ -1,31 +1,42 @@
 <%- include("../partials/head.ejs") %>
-<%-include("../partials/headerAdm.ejs") %>
-<main>
-    <div class="formPadre">
-        <h2>Formulario de Editar Perfil</h2>
-        <form method="POST" id="formCreate" enctype="multipart/form-data" action="/users/profile/<%=user.id%>?_method=PUT">
-            <div class="cajaButton">
-            <div class="subPadre"> 
-            <div>
-                <label for="nombre" class="form-label">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" value="<%= user.name %>">
-            </div>
-            <div>
-                <label for="apellido" class="form-label">Apellido:</label>
-                <input type="text" id="apellido" name="apellido"  value="<%= user.surname %>">
-            </div>
-            <div>
-                <label for="email" class="form-label">Email:</label>
-                <input type="email" id="email" name="email"  value="<%= user.email %>">
-            </div>
-            
-            <div>
-                <img src="/images/users/<%= user.image %>" alt="Avatar" class="avatar">
-                <label for="avatar">Imagen:</label>
-                <input type="file" name="avatar" id="avatar" accept="images/*" >
-            </div>
-            <div class="cajaButton"> 
-                <button class="btn btn-primary">Actualizar datos</button>
-            </div>
-            </div>
-        </form>
+    <%-include("../partials/headerAdm.ejs") %>
+        <main>
+            <div class="caja-form">
+                <div class="container-formulario1">
+                    <div class="formPadre">
+                        <h2>Formulario de Editar Perfil</h2>
+                        <form method="POST" id="formCreate" enctype="multipart/form-data"
+                            action="/users/profile/<%=user.id%>?_method=PUT">
+                            <div class="cajaButton">
+                                <div class="subPadre">
+                                    <div>
+                                        <label for="nombre" class="form-label">Nombre:</label>
+                                        <input type="text" id="nombre" name="nombre" value="<%= user.name %>">
+                                    </div>
+                                    <div>
+                                        <label for="apellido" class="form-label">Apellido:</label>
+                                        <input type="text" id="apellido" name="apellido" value="<%= user.surname %>">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="form-label">Email:</label>
+                                        <input type="email" id="email" name="email" value="<%= user.email %>">
+                                    </div>
+
+                                    <div>
+                                        <label for="avatar">Imagen:</label>
+                                        <input type="file" name="avatar" id="avatar" accept="images/*">
+                                    </div>
+                                    <div>
+                                        <img src="/images/users/<%= user.image %>" height="300px"
+                                        width="370px" alt="Avatar" class="avatar">
+                                        </div>
+                                    <div class="cajaButton">
+                                        <button class="btn btn-primary">Actualizar datos</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+        </main>

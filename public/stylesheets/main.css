@@ -3,19 +3,25 @@ main {
   }
   
   main p {
-    color: rgb(236, 236, 236);
-    font-size: 16px;
+    color: rgb(7, 6, 6);
+    
   }
   
   .titulo-home{
-    text-align: justify;
-    color: #d35400;
-    padding-left: 30px;
+    text-align: center;
+    color: #080807;
+    font-size: 50px;
   }
   .titulo-home2{
     text-align: end;
     color: #d35400;
     padding-right: 100px;
+  }
+  
+  .titulo-home3{
+    text-align: end;
+    color: #d35400;
+    padding-right: 220px;
   }
   
   .conteiner-home {
@@ -37,16 +43,25 @@ main {
   
   .texto1{
   text-align: justify;
+  font-size: 24px;
+  margin-left: 7px;
   }
   
   
   .imagen1 img {
-    height: 440px;
-      width: 550px;
+    height: 607px;
+    margin-top: 98px;
+    width: 550px;
+    margin-left: 7px;
+    margin-right: 20px;
   }
   .texto2{
   text-align: center;
-  }
+  font-size: 25px;
+  margin-left: 10px;
+    margin-right: 10px;
+}
+  
   
   
   
@@ -56,6 +71,7 @@ main {
         align-items: center;
   }
   .imagen2 img {
+    margin-left: 10px;
     height: 400px;
     width: 550px;
   }
