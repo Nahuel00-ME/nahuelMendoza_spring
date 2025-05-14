@@ -17,7 +17,7 @@ router.get('/logout',check,logout);
 
 router.get('/profile',check,profile);
 router.put('/profile/:id',uploadUser.single('avatar'),check,update);
-router.delete('/profile/:id',check, remove);
+router.delete('/borrar/:id', remove);
 
 
 module.exports = router;

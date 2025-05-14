@@ -1,126 +1,134 @@
-   
-   <%- include("../partials/head.ejs") %>
-   <% if(locals.user && locals.user.rol == 1){ %>
-    <%-include("../partials/headerAdm.ejs") %>
-    <% }else{%>
-   <%- include("../partials/header.ejs") %>
-        <% } %>
-   <h2 class="product-nombre">Seccion Rolls</h2>
-<section class="productos-body">
-        <div class="conteiner-roll">
-            <% roll.forEach(({id,name,price,category,image})=> { %>
+<%- include("../partials/head.ejs") %>
+    <% if(locals.user && locals.user.rol==1){ %>
+        <%-include("../partials/headerAdm.ejs") %>
+            <% }else{%>
+                <%- include("../partials/header.ejs") %>
+                    <% } %>
+                        <h2 class="product-nombre">Seccion Rolls</h2>
+                        <section class="productos-body">
+                            <div class="conteiner-roll">
+                                <% roll.forEach(({id,name,price,category,image})=> { %>
 
-                <article class="mierda">
-                    <div class="producto">
-                        <a href="/productos/detalle/<%= id %>">
-                            <img src="/images/<%= image || 'default.png' %>" alt="producto">
+                                    <article class="mierda">
+                                        <div class="producto">
+                                            <a href="/productos/detalle/<%= id %>">
+                                                <img src="/images/<%= image || 'default.png' %>" alt="producto">
 
-                            <div class="nombre">
-                                <p class="comentarios-descripcion">
-                                    <%= name %>
-                                </p>
+                                                <div class="nombre">
+                                                    <p class="comentarios-descripcion">
+                                                        <%= name %>
+                                                    </p>
+                                                </div>
+                                                <div class="precio">
+                                                    <span>
+                                                        <h2>$<%= price %>
+                                                        </h2>
+                                                    </span>
+                                                </div>
+                                                <button type="submit" class="boton-comprar">Comprar</button>
+
+                                            </a>
+                                        </div>
+                                    </article>
+
+                                    <% }) %>
                             </div>
-                            <div class="precio">
-                                <span>
-                                    <h2>$<%= price %>
-                                    </h2>
-                                </span>
+                        </section>
+                        <h2 class="product-nombre">Seccion Niguiris</h2>
+                        <section class="productos-body">
+                            <div class="producto-niguiris">
+                                <% niguiri.forEach(({id,name,price,category,image})=> { %>
+
+                                    <article class="conteiner-niguiris">
+                                        <div class="producto">
+                                            <a href="/productos/detalle/<%= id %>">
+                                                <img src="/images/<%= image || 'default.png' %>" alt="producto">
+
+                                                <div class="nombre">
+                                                    <p class="comentarios-descripcion">
+                                                        <%= name %>
+                                                    </p class="comentarios-descripcion">
+                                                </div>
+                                                <div class="precio">
+                                                    <span>
+                                                        <h2>$<%= price %>
+                                                        </h2>
+                                                    </span>
+                                                </div>
+
+                                                <button type="submit" class="boton-comprar">Comprar</button>
+                                            </a>
+                                        </div>
+                                    </article>
+
+                                    <% }) %>
                             </div>
-                            <button type="submit" class="boton-comprar">Comprar</button>
-                            
-                        </a>
-                    </div>
-                </article>
-                
-                <% }) %>
-            </div>
-        </section>
-        <h2 class="product-nombre">Seccion Niguiris</h2>
-        <section class="productos-body">
-            <div class="producto-niguiris">
-                <% niguiri.forEach(({id,name,price,category,image})=> { %>
-                    
-                    <article class="conteiner-niguiris">
-                        <div class="producto">
-                            <a href="/productos/detalle/<%= id %>">
-                                <img src="/images/<%= image || 'default.png' %>" alt="producto">
-                                
-                                <div class="nombre">
-                                    <p class="comentarios-descripcion">
-                                        <%= name %>
-                                    </p class="comentarios-descripcion">
+
+                        </section>
+                        <h2 class="titulo-comentarios">Opiniones de clientes que ya probaron nuestro producto!</h2>
+                        <div class="comentarios-padre">
+
+                            <div class="carousel-container">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item">"La calidad del sushi aquí es incomparable.
+                                        La textura y el sabor de cada rollo muestran la dedicación detrás de cada
+                                        detalle.
+                                        ¡Simplemente el mejor!"
+                                        <p> Laura González"</p>
+                                    </div>
+                                    <div class="carousel-item">"Tuve la mejor experiencia culinaria de mi vida probando
+                                        este sushi.
+                                        Ingredientes frescos y combinaciones creativas.
+                                        ¡Recomendado al 100%!" <p> Marcos Ramírez"</p>
+                                    </div>
+                                    <div class="carousel-item">"Cada bocado fue un viaje de sabores increíblemente bien
+                                        equilibrados.
+                                        Sin duda, este lugar se ha convertido en mi favorito."
+                                        <p> Valentina López"</p>
+                                    </div>
+
+                                    <div class="carousel-item">"Desde la presentación hasta el sabor, todo estuvo
+                                        impecable. Se nota la
+                                        pasión detrás de cada creación.
+                                        ¡Una experiencia que no se olvida!"
+                                        <p>Rodrigo Fernández</p>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <p>"El sushi aquí supera todas las expectativas. Ingredientes de primera
+                                            calidad y atención al detalle en cada plato.
+                                            ¡Un verdadero deleite!"</p>
+                                        <p> Sofía Martínez"</p>
+                                    </div>
                                 </div>
-                                <div class="precio">
-                                    <span>
-                                        <h2>$<%= price %>
-                                        </h2>
-                                    </span>
+                                <div class="carousel-controls">
+                                    <button class="prev-btn">Anterior</button>
+                                    <button class="next-btn">Siguiente</button>
                                 </div>
-                                
-                                <button type="submit" class="boton-comprar">Comprar</button>
-                            </a>
-                        </div>
-                    </article>
-                    
-                    <% }) %>
-                </div>
-                
-            </section>
-            <h2 class="titulo-comentarios">Opiniones de clientes que ya probaron nuestro producto!</h2>
-            <div class="comentarios-padre">
 
-                <div class="carousel-container">
-                <div class="carousel-inner">
-                    <div class="carousel-item">"La calidad del sushi aquí es incomparable.
-                        La textura y el sabor de cada rollo muestran la dedicación detrás de cada detalle.
-                        ¡Simplemente el mejor!"
-                        <p> Laura González"</p>
-                    </div>
-                    <div class="carousel-item">"Tuve la mejor experiencia culinaria de mi vida probando este sushi.
-                        Ingredientes frescos y combinaciones creativas.
-                        ¡Recomendado al 100%!" <p> Marcos Ramírez"</p>
-                    </div>
-                    <div class="carousel-item">"Cada bocado fue un viaje de sabores increíblemente bien
-                        equilibrados.
-                        Sin duda, este lugar se ha convertido en mi favorito."
-                        <p> Valentina López"</p>
-                    </div>
+                                <div class="dots-container">
 
-                    <div class="carousel-item">"Desde la presentación hasta el sabor, todo estuvo impecable. Se nota la
-                        pasión detrás de cada creación.
-                        ¡Una experiencia que no se olvida!"
-                        <p>Rodrigo Fernández</p>
-                    </div>
-                    <div class="carousel-item">
-                        <p>"El sushi aquí supera todas las expectativas. Ingredientes de primera
-                            calidad y atención al detalle en cada plato.
-                            ¡Un verdadero deleite!"</p>
-                        <p> Sofía Martínez"</p>
-                    </div>
-                </div>
-                <div class="carousel-controls">
-                    <button class="prev-btn">Anterior</button>
-                    <button class="next-btn">Siguiente</button>
-                </div>
+                            </div>
+                            <p>Dejanos tu Opinión</p>
+                            <div class="caja-Descripcion">
+                                <div class="formulario-descripcion">
+                                    <form id="formComentarios">
+                                        <div><label for="name">Nombre:</label>
+                                            <input type="text" id="name" name="name" required>
+                                        </div>
+                                        <div>
+                                            <label for="descripcion">Comentario:</label>
+                                            <textarea id="descripcion1" name="description"
+                                                class="form-control <%=(locals.errors && locals.errors.description) && 'is-invalid' %> ">       </textarea>
+                                        </div>
 
-                <div class="dots-container"></div>
 
-            </div>
-            <p>Dejanos tu Opinión</p>
-            <div class="formComentariosCaja">
-                <form id="formComentarios">
-                    <div><label for="name">Nombre:</label>
-                        <input type="text" id="name" name="name" required></div>
-                    <div><label for="comment">Comentario:</label>
-                        <textarea id="comment" name="comment" required></textarea></div>
-                    
-                    
-                    <button type="submit">Enviar</button>
-                </form>
-            </div>
-        </div>
-        </section>
-        <script type="module" src="/javascripts/carrusel.js"></script>
-        
-    <%-include("../partials/footer.ejs") %>
-    
+                                        <button type="submit" class="button-opinion">Enviar</button>
+                                    </form>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                            </section>
+                            <script type="module" src="/javascripts/carrusel.js"></script>
+
+                            <%-include("../partials/footer.ejs") %>

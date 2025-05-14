@@ -72,7 +72,36 @@
     align-items: center;
     justify-content: center;
   }
+  .caja-Descripcion
+  {
+       display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .formulario-descripcion{
+    border: 3px groove black;
+    padding: 25px 30px 35px 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #000000;
+    margin: 15px;
+    box-sizing: border-box
+  }
+  
   .container-formulario1 form{
     display: flex;
     flex-direction: column;
   }
+
+
+  .button-opinion {
+    background-color: rgb(31, 30, 30);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #000000
+}
+

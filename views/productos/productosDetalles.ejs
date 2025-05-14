@@ -1,11 +1,13 @@
-
-<%- include('../partials/head', {title: 'Detalle del producto'}) %>
-<%- include('../partials/header') %>
+   <%- include("../partials/head.ejs") %>
+   <% if(locals.user && locals.user.rol == 1){ %>
+    <%-include("../partials/headerAdm.ejs") %>
+    <% }else{%>
+   <%- include("../partials/header.ejs") %>
+        <% } %>
 <article class="detalleProducto">
     <div class="productoD">
         <div>
-        <img src="/images/<%= image.lenght ? image[0].file : 'default.png' %> " >
-
+     <img src="/images/<%= image ? image : 'default.png' %> " >
     <div class="descripcion-producto">
         <p class="descripcion"> <span>Detalles del producto </span> :</p> 
         <h3 class="descripcion"><%= description %> </h3>

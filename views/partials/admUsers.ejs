@@ -1,7 +1,7 @@
 <body>
     
-<%-include("../partials/headerAdm") %>
-<main class="table-admin">
+    <main class="table-admin">
+    <%-include("../partials/headerAdm") %>
 
     <div class="titulo-admin">
         <h1 class="text-center">Administrar usuarios</h1>
@@ -43,9 +43,9 @@
                         <div>
                             <a href="" class="btn-table">bloquear</a>
                         </div>
-                        <div>
-                            <a href="" class="btn-eliminar">eliminar</a>
-                        </div>
+                         <form action="/users/borrar/<%= id %>?_method=DELETE" method="POST">
+                                <button type="submit" class="btn-eliminar">borrar</button>
+                            </form>
                     </td>
                 </tr>
                     <% }) %>

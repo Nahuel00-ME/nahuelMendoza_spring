@@ -62,10 +62,13 @@
                             <% }) %>
                         </div>
                     </div>
-                    <div>
+              <div >
                         <label for="file">Imagen:</label>
-                        <input type="file" name="image" id="avatar" accept="images/*">
-                    </div>
+                        <input type="file" name="image" id="avatar1" accept="image/*">
+                        <img id="avatar1" src="/images/placeholder.png" alt="Avatar Preview" >
+                        <div id="avatarPreview" class="avatar-preview">
+
+                        </div>
                     <div class="cajaButton">
                         <div>
                             <button type="submit" class="bCrear">Guardar</button>
@@ -79,4 +82,5 @@
         </div>
     </div>
     </section>
+        <script src="/javascripts/imagenCambio.js"></script>
         <%-include("../partials/footer.ejs") %>

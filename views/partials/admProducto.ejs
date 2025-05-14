@@ -1,15 +1,16 @@
 
 <body>
     
+    
+    <main class="table-admin">
     <%-include("../partials/headerAdm") %>
+    <div>
 
-<main class="table-admin">
-
-    <div class="titulo-admin">
         <h1 class="text-center">Administrar productos</h1>
     </div>
-    <div>
-        <a href="/productos/productCrear" class="btn-table">+ Crear productos</a>
+    <div class="btn-crear">
+
+        <a href="/productos/productCrear" class="btn-Producto">+ Crear productos</a>
     </div>
     <div class="class-table">
         <table>
@@ -30,6 +31,7 @@
                     <tr>
                         <td>
                         <%=id %>
+                        
                         </td>
                         <td>
                             <%= name %>
