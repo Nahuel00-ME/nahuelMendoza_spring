@@ -1,63 +1,72 @@
-
 <body>
-    
-    
+
+
     <main class="table-admin">
-    <%-include("../partials/headerAdm") %>
-    <div>
+        <%-include("../partials/headerAdm") %>
+            <div>
 
-        <h1 class="text-center">Administrar productos</h1>
-    </div>
-    <div class="btn-crear">
+                <h1 class="text-center">Administrar productos</h1>
+            </div>
+            <div class="btn-crear">
 
-        <a href="/productos/productCrear" class="btn-Producto">+ Crear productos</a>
-    </div>
-    <div class="class-table">
-        <table>
-            <thead>
-                
-                <tr>
-                    <th>#</th>    
-                    <th>Producto</th>
-                    <th>Precio</th>
-                    <th>Piezas</th>
-                    <th>Categoria</th>
-                    <th>acciones</th>
-                </tr>                        
-            </thead>
-            <tbody>
-                <% products.forEach(({id,name,price,pieces,category})=> { %>
+                <a href="/productos/productCrear" class="btn-Producto">+ Crear productos</a>
+            </div>
+            <div class="class-table">
+                <table>
+                    <thead>
 
-                    <tr>
-                        <td>
-                        <%=id %>
-                        
-                        </td>
-                        <td>
-                            <%= name %>
-                        </td>
-                        <td>
-                            $<%= price %>
-                        </td>
-                        <td>
-                            <%= pieces %> ud.
-                        </td>
-                        <td>
-                            <%= category.name %>
-                        </td>
-                        <td>
-                            <div>
-                                <a href="/productos/editar/<%=id %>" class="btn-table">editar</a>
-                            </div>
-                            <form action="/productos/borrar/<%= id %>?_method=DELETE" method="POST">
-                                <button type="submit" class="btn-eliminar">borrar</button>
-                            </form>
-                            </div>
-                        </td>
-                    </tr>
-                    <% }) %>
-            </tbody>
-        </table>
-    </div>
-</main>
+                        <tr>
+                            <th>#</th>
+                            <th>imagenes</th>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Piezas</th>
+                            <th>Categoria</th>
+                            <th>acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% products.forEach(({id,name,price,pieces,category,image})=> { %>
+
+                            <tr>
+                                <td>
+                                    <%=id %>
+                                </td>
+                                <td>
+                                    <% if(image) { %>
+                                        <figure class="user-image-container">
+                                            <img src="/images/<%= image || 'default.png' %>" alt="<%= name %>"
+                                                loading="lazy" class="user-image-small">
+                                        </figure>
+                                        <% } else { %>
+                                            <span class="no-image">Sin imagen</span>
+                                            <% } %>
+                                </td>
+                                <td>
+                                    <%= name %>
+                                </td>
+                                <td>
+                                    $<%= price %>
+                                </td>
+                                <td>
+                                    <%= pieces %> ud.
+                                </td>
+                                <td>
+                                    <%= category.name %>
+                                </td>
+                                <td>
+                                    <div>
+                                        <a href="/productos/editar/<%=id %>" class="btn-table">editar</a>
+                                    </div>
+                                    <form action="/productos/borrar/<%= id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="btn-eliminar">borrar</button>
+                                    </form>
+            </div>
+            </td>
+            </tr>
+            <% }) %>
+                </tbody>
+                </table>
+                </div>
+    </main>
 </body>

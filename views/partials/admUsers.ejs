@@ -1,56 +1,69 @@
 <body>
-    
+
     <main class="table-admin">
-    <%-include("../partials/headerAdm") %>
+        <%-include("../partials/headerAdm") %>
 
-    <div class="titulo-admin">
-        <h1 class="text-center">Administrar usuarios</h1>
-    </div>
-    <div class="class-table">
-        <table>
-            <thead>
-                
-                <tr>
-                    <th>#</th>    
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>E-mail</th>
-                    <th>Rol</th>
-                    <th>Acciones</th>
-                </tr>
-                                            
-            </thead>
-            <tbody>
-                <% users.forEach(({id,name,surname,email,rol})=> { %>
+            <div class="titulo-admin">
+                <h1 class="text-center">Administrar usuarios</h1>
+            </div>
+            <div class="class-table">
+                <table>
+                    <thead>
 
-                    <tr>
-                        <td>
-                        <%=id %>
-                    </td>
-                    <td>
-                        <%= name %>
-                    </td>
-                    <td>
-                        <%= surname %>
-                    </td>
-                    <td>
-                        <%= email %>
-                    </td>
-                    <td>
-                        <%= rol.name %>
-                    </td>
-                    <td>
-                        <div>
-                            <a href="" class="btn-table">bloquear</a>
-                        </div>
-                         <form action="/users/borrar/<%= id %>?_method=DELETE" method="POST">
-                                <button type="submit" class="btn-eliminar">borrar</button>
-                            </form>
-                    </td>
-                </tr>
-                    <% }) %>
-            </tbody>
-        </table>
-    </div>
-</main>
+                        <tr>
+                            <th>#</th>
+                            <th>imagen</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>E-mail</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        <% users.forEach(({id,name,surname,email,rol,image})=> { %>
+
+                            <tr>
+                                <td>
+                                    <%=id %>
+                                </td>
+                                <td>
+                                    <% if(image) { %>
+                                        <figure class="user-image-container">
+                                            <img src="/images/users/<%= image || 'predeterminado.jpg' %>"
+                                                alt="<%= name %>" 
+                                                loading="lazy"
+                                                class="user-image-small">
+                                        </figure>
+                                        <% } else { %>
+                                            <span class="no-image">Sin imagen</span>
+                                            <% } %>
+                                </td>
+                                <td>
+                                    <%= name %>
+                                </td>
+                                <td>
+                                    <%= surname %>
+                                </td>
+                                <td>
+                                    <%= email %>
+                                </td>
+                                <td>
+                                    <%= rol.name %>
+                                </td>
+                                <td>
+                                    <div>
+                                        <a href="" class="btn-table">bloquear</a>
+                                    </div>
+                                    <form action="/users/borrar/<%= id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="btn-eliminar">borrar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
+    </main>
 </body>

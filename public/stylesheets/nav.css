@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'MorningRoutine';
+  src: url('/proyectoSpring/public/fonts/Morning-Routine.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 body {
   font-family: "Bruta Pro", Helvetica, Roboto, Arial, sans-serif;
     margin: 0px;
@@ -21,7 +29,7 @@ header {
   
   }
   .banner img {
-    height: 110vh;
+    height: 111vh;
     width: 100%;
     background-size: cover;
     background-position: center;
@@ -39,11 +47,12 @@ header {
   }
 
   #sakumu {
-    padding: 0px 10px;
-    font-size: 40px;
-    font-weight: bold;
-    color: #fff;
+        font-family: 'Font Awesome 6 Free';
+    padding: 0px 8px;
+    font-size: 45px;
+    color: rgb(244 231 161);
     text-decoration: none;
+  
 }
 #sakumu2 {
   padding: 0px 25px;
@@ -84,7 +93,7 @@ header {
     text-decoration: none;
     color: rgb(255, 255, 255);
     line-height: 53px;
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     padding: 0px 15px;
   }

@@ -136,12 +136,10 @@ const usersControllers = {
 
   remove: async (req, res) => {
     try {
-           req.session.destroy();
-      res.clearCookie("user");
       const id = req.params.id;
       await User.destroy({ where: { id } });
 
-      return res.redirect('/admin/users')
+      return res.redirect('/adm/users')
     } catch (error) {
       return res.status(500).render('error', {
         message: error.message,

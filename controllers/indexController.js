@@ -14,11 +14,13 @@ const indexController = {
 
       const [products, categories] = await Promise.all([
          db.Product.findAll({
+          atributes : ['id', 'image'],
             order : ['id'],
             include : ['category']
          }),
          db.Category.findAll()
       ])
+
 
       return res.render("partials/admProducto", {
          categories,
@@ -33,7 +35,9 @@ const indexController = {
   admUsuarios: async (req, res) => {
     try {
       const users = await db.User.findAll({
-        include : ['rol']
+        include : ['rol'],
+        atributes : ['id', 'image'],
+        order : ['id']
       })
       return res.render("partials/admUsers", {
         users,

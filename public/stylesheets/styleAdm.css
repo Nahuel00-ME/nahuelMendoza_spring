@@ -19,11 +19,12 @@ header {
     border-radius: 18px;
   }
   #sakumu {
-    padding: 0px 10px;
-    font-size: 40px;
-    font-weight: bold;
-    color: #fff;
+          font-family: 'Font Awesome 6 Free';
+    padding: 0px 8px;
+    font-size: 45px;
+    color: rgb(244 231 161);
     text-decoration: none;
+  
 
   }
 #sakumu2 {
@@ -67,7 +68,7 @@ header {
     text-decoration: none;
     color: rgb(255, 255, 255);
     line-height: 55px;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
     padding: 0px 10px;
 }
@@ -256,4 +257,32 @@ table th {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+
+/*VISTA DE IMAGENES CHIQUITAS*/ 
+
+.user-image-container {
+    max-width: 50px;
+    margin: 0 auto;
+}
+
+.user-image-small {
+    width: 160%;
+    margin: -15px;
+    height: auto;
+    object-fit: cover;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.no-image {
+    color: #666;
+    font-style: italic;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+figure {
+    margin: 0;
 }

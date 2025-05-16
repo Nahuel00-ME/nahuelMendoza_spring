@@ -7,73 +7,62 @@ main {
     
   }
   
-  .titulo-home{
-    text-align: center;
-    color: #080807;
-    font-size: 50px;
+  .main-home{
+    background-image: url("../images/fondofondo.jpeg");
+    background-size: cover;
+    background-position: center;
   }
+ 
   .titulo-home2{
-    text-align: end;
-    color: #d35400;
+       font-family: 'Font Awesome 6 Free';
+    text-align: center;
+    color: rgb(244 231 161);
     padding-right: 100px;
-  }
-  
-  .titulo-home3{
-    text-align: end;
-    color: #d35400;
-    padding-right: 220px;
   }
   
   .conteiner-home {
     display: flex;
    flex-direction: column;
   }
-  
-  .caja1{
-    display: flex;
-    flex-direction: row;
-    align-items: stretch
-  }
-  .caja2{
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: stretch
-    
-  }
-  
-  .texto1{
-  text-align: justify;
-  font-size: 24px;
-  margin-left: 7px;
-  }
-  
-  
-  .imagen1 img {
-    height: 607px;
-    margin-top: 98px;
-    width: 550px;
-    margin-left: 7px;
-    margin-right: 20px;
-  }
+ 
   .texto2{
   text-align: center;
   font-size: 25px;
-  margin-left: 10px;
-    margin-right: 10px;
+  background-color: #111111;
 }
   
+.banner-inferior{
+  background-image: url("../images/bannerInferior.png");
+  background-size: cover;
+  text-align: center;
+  border: 2px solid black;
+} 
   
-  
-  
-  .imagen2  {
-    display: flex ;
-        flex-direction: row;
-        align-items: center;
-  }
-  .imagen2 img {
-    margin-left: 10px;
-    height: 400px;
-    width: 550px;
-  }
-  
-  
+.eslogan{
+  color: #d35400;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 20px;
+
+}
+.eslogan1{
+  color:rgb(218 210 163);;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 20px;
+
+}
+
+.direccion {
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+}
+
+.sucursales{
+      border: 8px solid black;
+    box-sizing: border-box;
+    margin-left: 360px;
+    margin-right: 360px;
+    margin-bottom: 60px;
+    background-color: rgb(247 236 174)
+}
